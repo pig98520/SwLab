@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "902577037262",
+    "firebase_url": "https://swlabapp.firebaseio.com",
+    "project_id": "swlabapp",
+    "storage_bucket": "swlabapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902577037262:android:92b5a93dd5163f15",
+        "android_client_info": {
+          "package_name": "com.example.swlab.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902577037262-nvruj298hli27gik0736uk1s7j4fvcnh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.swlab.myapplication",
+            "certificate_hash": "031004c2672d2e55327c1ffe1a9803a2387b9145"
+          }
+        },
+        {
+          "client_id": "902577037262-iaqioq8pq8pcs5sloq21jt5c9lfcf89h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkfnB_7tkW3rHHydlRzACoAW1jDGZpUrs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902577037262-iaqioq8pq8pcs5sloq21jt5c9lfcf89h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
