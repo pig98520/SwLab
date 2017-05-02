@@ -21,7 +21,6 @@ public class Mood_Diary_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mood_diary);
-        Firebase.setAndroidContext(this);
         processView();
         processControl();
     }

@@ -20,7 +20,6 @@ public class Sports_Situps extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sports_situps);
-        Firebase.setAndroidContext(this);
         processView();
         processControl();
     }

@@ -20,7 +20,6 @@ public class Sports_Upanddown extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sports_rope);
-        Firebase.setAndroidContext(this);
         processView();
         processControl();
     }
