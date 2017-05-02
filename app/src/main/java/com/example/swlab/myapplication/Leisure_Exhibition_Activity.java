@@ -16,25 +16,17 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
         private String url;
         private String png;
 
-        public void setDate(String date) {
+        public void setDate(String date) {this.date = date;}
+        public String getDate() {return date;}
 
-            this.date = date;
-        }
+        public void setPng(String png) {this.png = png;}
+        public String getPng() {return png;}
 
-        public void setPng(String png) {
+        public void setTitle(String title) {this.title = title;}
+        public String getTitle() {return title;}
 
-            this.png = png;
-        }
-
-        public void setTitle(String title) {
-
-            this.title = title;
-        }
-
-        public void setUrl(String url) {
-
-            this.url = url;
-        }
+        public void setUrl(String url) {this.url = url;}
+        public String getUrl() {return url;}
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
