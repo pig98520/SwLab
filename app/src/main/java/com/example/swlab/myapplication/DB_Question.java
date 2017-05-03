@@ -5,6 +5,9 @@ package com.example.swlab.myapplication;
  */
 
 public class DB_Question {
+
+
+    public static final String REF_QUESTION="question";
     private String que;
     private String ans;
 
@@ -33,6 +36,7 @@ public class DB_Question {
         this.ans = ans;
     }
 
-
-
+    public static String getRefQuestion() {
+        return REF_QUESTION;
+    }
 }

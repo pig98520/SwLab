@@ -1,3 +1,4 @@
+
 package com.example.swlab.myapplication;
 
 import android.os.Bundle;
@@ -22,31 +23,41 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Question_Activity extends AppCompatActivity {
-    private ListView mListView;
+    private ArrayList<DB_Question> list=new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
 
-        mListView=(ListView)findViewById(R.id.listview);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://swlabapp.firebaseio.com/");
-        FirebaseListAdapter<String> firebaseListAdapter =new FirebaseListAdapter<String>(
-                this,
-                String.class,
-                android.R.layout.simple_list_item_1,
-                databaseReference
-        ) {
+        ListView listView = (ListView) findViewById(R.id.listview);
+        final ArrayAdapter<String> adapterQ = new ArrayAdapter<String>(this,
+                android.R.layout.two_line_list_item,
+                android.R.id.text1);
+        listView.setAdapter(adapterQ);
+
+        DatabaseReference reference_contacts = FirebaseDatabase.getInstance().getReference("question");
+        reference_contacts.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
-            protected void populateView(View v, String model, int position) {
-                      TextView textView=(TextView) v.findViewById(android.R.id.text1);
-                    textView.setText(model);
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                adapterQ.clear();
+                for(com.google.firebase.database.DataSnapshot ds:dataSnapshot.getChildren()){
+                    adapterQ.add(ds.child("Que").getValue().toString());
+                    adapterQ.add(ds.child("Ans").getValue().toString());
+                }
             }
-        };
-        mListView.setAdapter(firebaseListAdapter);
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
 }
