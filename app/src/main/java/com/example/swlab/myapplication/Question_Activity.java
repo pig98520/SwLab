@@ -16,6 +16,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,41 +28,25 @@ import java.util.List;
 
 public class Question_Activity extends AppCompatActivity {
     private ListView mListView;
-    private ArrayList<String> arrayList=new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
-        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReferenceFromUrl("https://swlabapp.firebaseio.com/").child("question");
-        mListView=(ListView) findViewById(R.id.listview);
-        final ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
-        mListView.setAdapter(arrayAdapter);
-        databaseReference.addChildEventListener(new ChildEventListener() {
+
+        mListView=(ListView)findViewById(R.id.listview);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://swlabapp.firebaseio.com/");
+        FirebaseListAdapter<String> firebaseListAdapter =new FirebaseListAdapter<String>(
+                this,
+                String.class,
+                android.R.layout.simple_list_item_1,
+                databaseReference
+        ) {
             @Override
-            public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-                String value =dataSnapshot.getValue(String.class);
-                arrayList.add(value);
+            protected void populateView(View v, String model, int position) {
+                      TextView textView=(TextView) v.findViewById(android.R.id.text1);
+                    textView.setText(model);
             }
-
-            @Override
-            public void onChildChanged(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        };
+        mListView.setAdapter(firebaseListAdapter);
     }
 }
