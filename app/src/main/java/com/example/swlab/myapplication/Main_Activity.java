@@ -77,7 +77,7 @@ public class Main_Activity extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(Main_Activity.this,"歡迎回來~   "+user, Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent();
-                        intent.setClass(Main_Activity.this,Index_Aactivity.class);
+                        intent.setClass(Main_Activity.this,Index_Activity.class);
                         startActivity(intent);
                     }
                 })
@@ -93,7 +93,7 @@ public class Main_Activity extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(Main_Activity.this,"歡迎加入~ "+user, Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent();
-                        intent.setClass(Main_Activity.this,Index_Aactivity.class);
+                        intent.setClass(Main_Activity.this,Index_Activity.class);
                         startActivity(intent);
                     }
                 })

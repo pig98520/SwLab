@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class Index_Aactivity extends AppCompatActivity {
+public class Index_Activity extends AppCompatActivity {
     private Button btnfun1;
     private Button btnfun2;
     private Button btnfun3;
@@ -33,7 +33,7 @@ public class Index_Aactivity extends AppCompatActivity {
         btnfun1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Mood_Activity.class);
+                intent.setClass(Index_Activity.this,Mood_Activity.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class Index_Aactivity extends AppCompatActivity {
         btnfun2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Leisure_Activity.class);
+                intent.setClass(Index_Activity.this,Leisure_Activity.class);
                 startActivity(intent);
             }
         });
@@ -49,28 +49,28 @@ public class Index_Aactivity extends AppCompatActivity {
         btnfun3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Chat_Activity.class);
+                intent.setClass(Index_Activity.this,Chat_Activity.class);
                 startActivity(intent);
             }
         });
         btnfun4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Music_Activity.class);
+                intent.setClass(Index_Activity.this,Music_Activity.class);
                 startActivity(intent);
             }
         });
         btnfun5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Sports_Activity.class);
+                intent.setClass(Index_Activity.this,Sports_Activity.class);
                 startActivity(intent);
             }
         });
         btnfun6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(Index_Aactivity.this,Question_Activity.class);
+                intent.setClass(Index_Activity.this,Question_Activity.class);
                 startActivity(intent);
             }
         });

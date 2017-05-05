@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Index_Aactivity" />
+        <activity android:name=".Index_Activity" />
         <activity android:name=".Chat_Activity" />
         <activity android:name=".Mood_Activity" />
         <activity android:name=".Sports_Activity" />

@@ -42,7 +42,7 @@ public class Sports_Upanddown extends AppCompatActivity {
 
     private void insertDate(String Count,String sportDate){
         Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com");
-        Firebase userRef = myFirebaseRef.child("sport").child("rope");
+        Firebase userRef = myFirebaseRef.child("sport").child("upanddown");
         DB_Sports_Ohters data = new DB_Sports_Ohters(Count,sportDate);
         userRef.push().setValue(data);
     }

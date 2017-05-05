@@ -10,9 +10,9 @@ public class Sports_Content extends AppCompatActivity {
     private Button run;
     private Button bike;
     private Button swim;
-    private Button basketball;
-    private Button badminton;
-    private Button baseball;
+    private Button upanddown;
+    private Button situps;
+    private Button squatiing;
     private Button rope;
     private Button hula;
     @Override
@@ -26,9 +26,9 @@ public class Sports_Content extends AppCompatActivity {
         run=(Button)findViewById(R.id.run_btn);
         bike=(Button)findViewById(R.id.bike_btn);
         swim=(Button)findViewById(R.id.swim_btn);
-        basketball=(Button)findViewById(R.id.upanddown_btn);
-        badminton=(Button)findViewById(R.id.situps_btn);
-        baseball=(Button)findViewById(R.id.squatting_btn);
+        upanddown=(Button)findViewById(R.id.upanddown_btn);
+        situps=(Button)findViewById(R.id.situps_btn);
+        squatiing=(Button)findViewById(R.id.squatting_btn);
         rope=(Button)findViewById(R.id.rope_btn);
         hula=(Button)findViewById(R.id.hula_btn);
     }
@@ -54,21 +54,21 @@ public class Sports_Content extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        basketball.setOnClickListener(new View.OnClickListener() {
+        upanddown.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Content.this, Sports_Upanddown.class);
                 startActivity(intent);
             }
         });
-        badminton.setOnClickListener(new View.OnClickListener() {
+        situps.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Content.this, Sports_Situps.class);
                 startActivity(intent);
             }
         });
-        baseball.setOnClickListener(new View.OnClickListener() {
+        squatiing.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Content.this, Sports_Squatting.class);

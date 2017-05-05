@@ -57,7 +57,7 @@ public class Music_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Music_Activity.this  , Index_Aactivity.class);
+                intent.setClass(Music_Activity.this  , Index_Activity.class);
                 startActivity(intent);
             }
         });
