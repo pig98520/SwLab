@@ -27,5 +27,8 @@ public class DB_Question {
         return ans;
     }
 
+    public void setQue(String que) {this.que = que;}
+
+    public void setAns(String ans) {this.ans = ans;}
 
 }

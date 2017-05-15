@@ -1,3 +1,4 @@
+
 package com.example.swlab.myapplication;
 
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class Question_Activity extends AppCompatActivity {
     }
 
     private void processView() {
-        databaseRef= FirebaseDatabase.getInstance().getReference("question");
+        databaseRef= FirebaseDatabase.getInstance().getReference(DB_Question.REF_QUESTION);
         listview=(ListView)findViewById(R.id.listView);
         questionList=new ArrayList<>();
     }
