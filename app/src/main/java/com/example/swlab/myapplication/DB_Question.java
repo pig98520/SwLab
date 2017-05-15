@@ -5,8 +5,6 @@ package com.example.swlab.myapplication;
  */
 
 public class DB_Question {
-
-
     public static final String REF_QUESTION="question";
     private String que;
     private String ans;
@@ -24,19 +22,10 @@ public class DB_Question {
         return que;
     }
 
-    public void setQue(String que) {
-        this.que = que;
-    }
 
     public String getAns() {
         return ans;
     }
 
-    public void setAns(String ans) {
-        this.ans = ans;
-    }
 
-    public static String getRefQuestion() {
-        return REF_QUESTION;
-    }
 }

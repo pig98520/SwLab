@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "902577037262-h90jj8o7rgui1glantagfgo88oa9j7a3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.swlab.myapplication",
+            "certificate_hash": "48fd9ac455386f60e4f3e260f026a3a084301536"
+          }
+        },
+        {
           "client_id": "902577037262-nvruj298hli27gik0736uk1s7j4fvcnh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
