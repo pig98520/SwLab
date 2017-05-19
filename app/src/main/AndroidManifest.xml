@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tool"
     package="com.example.swlab.myapplication"
     >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk tools:overrideLibrary="android.support.v17.leanback"/>
     <application
         android:allowBackup="true"
