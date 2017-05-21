@@ -1,130 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/exhibition1_url"
-        android:visibility="gone" />
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.swlab.myapplication.Leisure_Exhibition_Activity">
 
-    <ImageView
-        android:id="@+id/exhibition_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:scaleType="centerInside"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <ImageView
-        android:id="@+id/exhibition_image1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:scaleType="centerInside"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/exhibition2_url"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <ImageView
-        android:id="@+id/exhibition_image2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:scaleType="centerInside"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/exhibition_image1"
-        android:layout_toRightOf="@+id/exhibition2_url"
-        android:layout_toEndOf="@+id/exhibition2_url" />
-
-    <TextView
-        android:id="@+id/title1"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_toRightOf="@+id/exhibition_image"
-        android:text="TextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/date1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="TextView"
-        android:layout_below="@+id/title1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/title1"
-        android:layout_alignStart="@+id/title1" />
-
-    <TextView
-        android:id="@+id/exhibition2_url"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/exhibition_image"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="TextView"
-        android:layout_alignTop="@+id/exhibition_image1"
-        android:layout_alignLeft="@+id/date1"
-        android:layout_alignStart="@+id/date1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/date2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/exhibition_image1"
-        android:layout_alignLeft="@+id/title2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/title2"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/title3"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="TextView"
-        android:layout_alignTop="@+id/exhibition_image2"
-        android:layout_alignLeft="@+id/date2"
-        android:layout_alignStart="@+id/date2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/date3"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/exhibition_image2"
-        android:layout_alignLeft="@+id/title3"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/title3"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/exhibition3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_alignEnd="@+id/exhibition2_url"
-        android:layout_alignRight="@+id/exhibition2_url"
-        android:layout_below="@+id/exhibition_image1"
-        android:text="TextView" />
-
-
-</RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="395dp"
+        android:layout_height="587dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
+</android.support.constraint.ConstraintLayout>

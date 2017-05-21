@@ -1,76 +1,81 @@
 package com.example.swlab.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.firebase.client.Firebase;
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.google.firebase.database.ValueEventListener;
 
 public class Leisure_Exhibition_Activity extends AppCompatActivity {
-    public class Exhibition {
-        private String date;
-        private String title;
-        private String url;
-        private String png;
-
-        public void setDate(String date) {this.date = date;}
-        public String getDate() {return date;}
-
-        public void setPng(String png) {this.png = png;}
-        public String getPng() {return png;}
-
-        public void setTitle(String title) {this.title = title;}
-        public String getTitle() {return title;}
-
-        public void setUrl(String url) {this.url = url;}
-        public String getUrl() {return url;}
-    }
+    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leisure_exhibition);
-        Firebase.setAndroidContext(this);
-        processView();
-        processControl();
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setupRecyclerView();
     }
 
-    private void processControl() {
-
-    }
-
-    private void processView() {
-
-    }
-
-
-    private ArrayList<Exhibition> list = new ArrayList<Exhibition>();
-
-        private void setupFirebase() {
-            final String exhibition_date = "date";
-            final String exhibitiob_png = "png";
-            final String exhibitiob_title = "title";
-            final String exhibitiob_url = "url";
-
-            /*DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("exhibition");
-            dbRef.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
-                @Override
-                public void onChildAdded(com.google.firebase.database.DataSnapshot dataSnapshot, String s) {
-                    Exhibition n = new Exhibition();
-                    n.setDate((String) dataSnapshot.child(exhibition_date).getValue());
-                    n.setPng((String) dataSnapshot.child(exhibitiob_png).getValue());
-                    n.setTitle((String) dataSnapshot.child(exhibitiob_title).getValue());
-                    n.setUrl((String) dataSnapshot.child(exhibitiob_url).getValue());
-
-                    list.add(0,n);
-                    adapter.notifyDataSetChanged();
-
+    private void setupRecyclerView() {
+        DatabaseReference databaseRef=FirebaseDatabase.getInstance().getReference("exhibition");
+        databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot pisSnapshot : dataSnapshot.getChildren()) {
+                    DB_Lerisure_Exhibition lerisure=pisSnapshot.getValue(DB_Lerisure_Exhibition.class);
+                    Log.i("Photo's Title:", lerisure.getTitle());
+                    Log.i("Photo's Content:", lerisure.getContent());
+                    Log.i("Photo's Url:", lerisure.getImageUrl());
                 }
+            }
 
-            });*/
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("Photo", "failed: " + databaseError.getMessage());
+            }
+        });
+        FirebaseRecyclerAdapter<DB_Lerisure_Exhibition,LeisureViewHolder> adapter=
+                new FirebaseRecyclerAdapter<DB_Lerisure_Exhibition, LeisureViewHolder>(DB_Lerisure_Exhibition.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
+                    @Override
+                    protected void populateViewHolder(LeisureViewHolder viewHolder, DB_Lerisure_Exhibition model, int position) {
+                        viewHolder.setPhoto(model);
+                    }
+                };
+        recyclerView.setAdapter(adapter);
+    }
+    static class LeisureViewHolder extends RecyclerView.ViewHolder {
+        ImageView image;
+        TextView title;
+        TextView content;
+
+        public LeisureViewHolder(View itemView) {
+            super(itemView);
+            image = (ImageView) itemView.findViewById(R.id.imageView);
+            title = (TextView) itemView.findViewById(R.id.txt_title);
+            content = (TextView) itemView.findViewById(R.id.txt_content);
         }
 
+        public void setPhoto(DB_Lerisure_Exhibition lerisure) {
+            title.setText(lerisure.getTitle());
+            content.setText(lerisure.getContent());
+            Glide.with(image.getContext())
+                    .load(lerisure.getImageUrl())
+                    .into(image);
+        }
     }
+
+}
 
