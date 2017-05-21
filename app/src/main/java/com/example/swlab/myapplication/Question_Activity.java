@@ -45,7 +45,6 @@ public class Question_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 questionList.clear();
-
                 for(DataSnapshot questionSnapshot : dataSnapshot.getChildren()){
                     DB_Question question=questionSnapshot.getValue(DB_Question.class);
                     questionList.add(question);
