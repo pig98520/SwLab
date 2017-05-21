@@ -1,5 +1,6 @@
 package com.example.swlab.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +30,8 @@ public class Leisure_Article_Activity extends YouTubeBaseActivity implements You
     private Spinner spinner;
     private Button confirm;
     private ArrayAdapter<String> adapter;
-    private int video_id;
+    private Bundle bundle;
+    private int videoIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class Leisure_Article_Activity extends YouTubeBaseActivity implements You
 
     private void processView() {
         youTubePlayerView=(YouTubePlayerView)findViewById(R.id.youtube_player);
+        bundle = getIntent().getExtras();
         youTubePlayerView.initialize(API_KEY,Leisure_Article_Activity.this);
         spinner=(Spinner)findViewById(R.id.spinner);
         confirm=(Button)findViewById(R.id.btn_confirm);
@@ -53,6 +56,14 @@ public class Leisure_Article_Activity extends YouTubeBaseActivity implements You
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("video_id", spinner.getSelectedItemPosition()+"");
+                Intent intent = new Intent();
+                //設定下一個Actitity
+                intent.setClass(Leisure_Article_Activity.this,Leisure_Article_Activity.class);
+                intent.putExtras(bundle);
+                //開啟Activity
+                startActivity(intent);
             }
         });
     }
@@ -60,8 +71,6 @@ public class Leisure_Article_Activity extends YouTubeBaseActivity implements You
     private AdapterView.OnItemSelectedListener selectListener=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            video_id=spinner.getSelectedItemPosition();
-            Toast.makeText(Leisure_Article_Activity.this,video_id+"",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -73,8 +82,14 @@ public class Leisure_Article_Activity extends YouTubeBaseActivity implements You
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
         youTubePlayer.setPlaybackEventListener(playbackEventListener);
-        if(!b)
-           youTubePlayer.cueVideo(videoArray[video_id]);
+        if(!b) {
+            if (bundle != null){
+                videoIndex=Integer.parseInt(bundle.getString("video_id"));
+                youTubePlayer.cueVideo(videoArray[videoIndex]);
+            }
+            else
+                youTubePlayer.cueVideo(videoArray[0]);
+        }
     }
 
 
