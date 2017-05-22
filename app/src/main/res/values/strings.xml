@@ -66,5 +66,6 @@
     <string name="Confirm">Confirm</string>
     <string name="date">日期</string>
     <string name="content">content</string>
+    <string name="question">question</string>
 
 </resources>

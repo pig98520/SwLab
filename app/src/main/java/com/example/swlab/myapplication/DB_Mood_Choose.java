@@ -13,17 +13,20 @@ public class DB_Mood_Choose {
     private ImageButton laugh;
     private ImageButton sad;
     private ImageButton surprise;
+    private String moods;
 
     public DB_Mood_Choose(){
     }
 
-    public DB_Mood_Choose(ImageButton angry,ImageButton happy,ImageButton heart,ImageButton laugh,ImageButton sad,ImageButton surprise) {
+    public DB_Mood_Choose(ImageButton angry,ImageButton happy,ImageButton heart,ImageButton laugh,ImageButton sad,ImageButton surprise,String moods) {
         this.angry = angry;
         this.happy = happy;
         this.heart = heart;
         this.laugh = laugh;
         this.sad = sad;
         this.surprise = surprise;
+        this.moods = moods;
+
     }
 
     public ImageButton getAngry() {
@@ -70,10 +73,14 @@ public class DB_Mood_Choose {
         return surprise;
     }
 
-    public void setsurprise( ImageButton getsurprise) {
-        this.surprise = surprise;
+    public void setsurprise( ImageButton getsurprise) {this.surprise = surprise;}
+
+    public String getmoods() {
+        return moods;
     }
 
-
+    public void setmoods(String moods) {
+        this.moods = moods;
+    }
 
 }
