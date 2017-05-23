@@ -130,6 +130,7 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
 
         }
     };
+
     private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
         @Override
         public void onPlaying() {
