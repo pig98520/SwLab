@@ -15,7 +15,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-    public static final String API_KEY = "AIzaSyCSoju_ikeadgsz-TL4ipk5AI1bQSw0wSQ";
+    public static final String API_KEY = "AIzaSyBsN5-NKuST0EM-n73aLOGLKhcuoRoA66M";
     //public static final String VIDEO_ID="_kOyO5Jg8wk";
     private String videoArray[] = new String[]
             {"NLElzEJPceA",
