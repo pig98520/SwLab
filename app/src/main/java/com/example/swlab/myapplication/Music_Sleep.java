@@ -37,7 +37,7 @@ public class Music_Sleep extends AppCompatActivity {
 
     private void setMusic() {
         music=new MediaPlayer(); //建立一個media player
-        musicFirebaseRef=new Firebase("https://swlabapp.firebaseio.com/relax/"+(int) (Math.random()*5+1)); //取得firebase網址 用亂數取得節點網址
+        musicFirebaseRef=new Firebase("https://swlabapp.firebaseio.com/server/relax/"+(int) (Math.random()*5+1)); //取得firebase網址 用亂數取得節點網址
 
         musicFirebaseRef.addValueEventListener(new ValueEventListener() {
             @Override

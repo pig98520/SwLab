@@ -30,7 +30,7 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        DatabaseReference databaseRef=FirebaseDatabase.getInstance().getReference("exhibition");
+        DatabaseReference databaseRef=FirebaseDatabase.getInstance().getReference("server/exhibition");
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
