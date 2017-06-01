@@ -53,10 +53,10 @@
         <activity android:name=".Sports_Notification_Activity" />
         <activity android:name=".Sports_Content" />
         <activity android:name=".Sports_Run" />
+        <activity android:name=".Sports_Bike" />
         <activity android:name=".Sports_Situps" />
         <activity android:name=".Sports_Squatting" />
         <activity android:name=".Sports_Upanddown" />
-        <activity android:name=".Sports_Bike" />
         <activity android:name=".Sports_Hula" />
         <activity android:name=".Sports_Rope" />
         <activity android:name=".Sports_Swim" />

@@ -15,24 +15,32 @@
       },
       "oauth_client": [
         {
-          "client_id": "902577037262-h90jj8o7rgui1glantagfgo88oa9j7a3.apps.googleusercontent.com",
+          "client_id": "902577037262-7olagsi2dggo0buuipisfqeh30rctur8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.swlab.myapplication",
-            "certificate_hash": "48fd9ac455386f60e4f3e260f026a3a084301536"
+            "certificate_hash": "4605826826ab869e3608dd506456f88b0a72af32"
           }
         },
         {
-          "client_id": "902577037262-nvruj298hli27gik0736uk1s7j4fvcnh.apps.googleusercontent.com",
+          "client_id": "902577037262-mdramn5reonrbpbc59apkplulvvf92d9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.swlab.myapplication",
-            "certificate_hash": "031004c2672d2e55327c1ffe1a9803a2387b9145"
+            "certificate_hash": "80fd5b429fc12328b3b42802170434e9137f0998"
           }
         },
         {
           "client_id": "902577037262-iaqioq8pq8pcs5sloq21jt5c9lfcf89h.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "902577037262-o0et09tsee79tmqp6nrc8b448dcn43qr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.swlab.myapplication",
+            "certificate_hash": "48fd9ac455386f60e4f3e260f026a3a084301536"
+          }
         }
       ],
       "api_key": [

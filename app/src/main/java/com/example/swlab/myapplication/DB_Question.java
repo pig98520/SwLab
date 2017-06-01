@@ -5,7 +5,7 @@ package com.example.swlab.myapplication;
  */
 
 public class DB_Question {
-    public static final String REF_QUESTION="question";
+    public static final String REF_QUESTION="server/question";
     private String que;
     private String ans;
 

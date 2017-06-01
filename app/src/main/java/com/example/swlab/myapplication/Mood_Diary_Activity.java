@@ -8,14 +8,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Mood_Diary_Activity extends AppCompatActivity {
     private DatePicker date;
     private EditText content;
     private Button submit;
-
     private String moodDate;
     private String Content;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class Mood_Diary_Activity extends AppCompatActivity {
         date=(DatePicker)findViewById(R.id.datePicker);
         content=(EditText)findViewById(R.id.txtContent);
         submit=(Button)findViewById(R.id.submit);
+        auth= FirebaseAuth.getInstance();
     }
 
     private void processControl() {
@@ -41,8 +43,8 @@ public class Mood_Diary_Activity extends AppCompatActivity {
     }
 
     private void insertDate(String moodDate,String Content){
-        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com");
-        Firebase userRef = myFirebaseRef.child("moodDiary");
+        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user");
+        Firebase userRef = myFirebaseRef.child("moodDiary").child(auth.getCurrentUser().getUid().trim());
         DB_Mood_Diary data = new DB_Mood_Diary(moodDate,Content);
         userRef.push().setValue(data);
     }

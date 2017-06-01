@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Sports_Run extends AppCompatActivity {
     private DatePicker date;
@@ -15,11 +16,11 @@ public class Sports_Run extends AppCompatActivity {
     private EditText distance;
     private EditText time;
     private Button submit;
-
     private String sportDate;
     private String Cal;
     private String Distance;
     private String sportTime;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class Sports_Run extends AppCompatActivity {
         distance=(EditText)findViewById(R.id.txtDistance);
         time=(EditText)findViewById(R.id.txtTime);
         submit=(Button)findViewById(R.id.submit);
+        auth= FirebaseAuth.getInstance();
     }
 
     private void processControl() {
@@ -50,8 +52,8 @@ public class Sports_Run extends AppCompatActivity {
     }
 
     private void insertDate(String sportDate,String Cal, String Distance, String sportTime){
-        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com");
-        Firebase userRef = myFirebaseRef.child("sport").child("run");
+        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user");
+        Firebase userRef = myFirebaseRef.child("sport").child("run").child(auth.getCurrentUser().getUid().trim());
         DB_Sports_Bike_Run_Swim data = new DB_Sports_Bike_Run_Swim(sportDate,Cal,Distance,sportTime);
         userRef.push().setValue(data);
     }

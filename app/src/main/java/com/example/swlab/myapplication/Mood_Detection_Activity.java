@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class Mood_Detection_Activity extends AppCompatActivity{
     private SimpleDateFormat dtFormat;
     private String nowTime;
     private Date date;
-    private QuestionBank mQuestionLibrary = new QuestionBank();
+    private Mood_Detection_Question mQuestionLibrary = new Mood_Detection_Question();
     private TextView mQuestionView;
     private Button mButtonChoice1;
     private Button mButtonChoice2;
@@ -29,6 +30,7 @@ public class Mood_Detection_Activity extends AppCompatActivity{
     private String mAnswer;
     private int mQuestionNumber = 0 ;
     private int mScore=0;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class Mood_Detection_Activity extends AppCompatActivity{
         mButtonChoice2 = (Button) findViewById(R.id.choice2);
         mButtonChoice3 = (Button) findViewById(R.id.choice3);
         mButtonChoice4 = (Button) findViewById(R.id.choice4);
+        auth= FirebaseAuth.getInstance();
     }
 
     private void processControl() {
@@ -78,7 +81,7 @@ public class Mood_Detection_Activity extends AppCompatActivity{
                 dtFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
                 date = new Date();
                 nowTime = dtFormat.format(date);
-                Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com").child("moodDetection");
+                Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user").child("moodDetection").child(auth.getCurrentUser().getUid().trim());
                 DB_Mood_Detiction data = new DB_Mood_Detiction(mScore+"",nowTime);
                 myFirebaseRef.push().setValue(data);
 

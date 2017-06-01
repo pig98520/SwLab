@@ -4,7 +4,7 @@ package com.example.swlab.myapplication;
  * Created by Owner on 2017/5/22.
  */
 
-public class QuestionBank {
+public class Mood_Detection_Question {
 
     private String textQuestions []={
             "1. 我常常覺得想哭",

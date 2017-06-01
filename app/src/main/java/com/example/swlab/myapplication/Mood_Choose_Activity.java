@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
     private ImageButton sad;
     private ImageButton surprise;
     private String moods;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
         laugh=(ImageButton)findViewById(R.id.laugh_btn);
         sad=(ImageButton)findViewById(R.id.sad_btn);
         surprise=(ImageButton)findViewById(R.id.surprise_btn);
+        auth= FirebaseAuth.getInstance();
     }
 
     private void processControl() {
@@ -88,7 +91,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
        dtFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
        date = new Date();
        nowTime = dtFormat.format(date);
-        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com").child("moodChoose");
+        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user").child("moodChoose").child(auth.getCurrentUser().getUid().trim());
         DB_Mood_Choose data = new DB_Mood_Choose(moods,nowTime);
         myFirebaseRef.push().setValue(data);
     }
