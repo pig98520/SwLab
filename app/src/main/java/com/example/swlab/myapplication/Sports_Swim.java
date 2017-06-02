@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,6 +82,7 @@ public class Sports_Swim extends AppCompatActivity {
                 distance=edt_distance.getText().toString().trim();
                 sportTime=edt_time.getText().toString().trim();
                 insertData(nowTime,cal,distance,sportTime);
+                Toast.makeText(Sports_Swim.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
             }
         });
         timer.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +153,7 @@ public class Sports_Swim extends AppCompatActivity {
                 distance=edt_distance.getText().toString().trim();
                 sportTime=edt_time.getText().toString().trim();
                 insertData(nowTime,cal,distance,sportTime);
+                Toast.makeText(Sports_Swim.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
             }
         };
         DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
