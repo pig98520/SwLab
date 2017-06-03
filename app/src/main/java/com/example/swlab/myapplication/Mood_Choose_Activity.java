@@ -1,6 +1,8 @@
 package com.example.swlab.myapplication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -47,46 +49,65 @@ public class Mood_Choose_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moods="Happy";
-                insert(moods);
+                checkDialog(moods);
             }
         });
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moods="Angry";
-                insert(moods);
+                checkDialog(moods);
             }
         });
        heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moods="Heart";
-                insert(moods);
+                checkDialog(moods);
             }
         });
         laugh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moods="Lanugh";
-                insert(moods);
+                checkDialog(moods);
             }
         });
         sad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moods="Sad";
-                insert(moods);
+                checkDialog(moods);
             }
         });
         surprise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 moods="Surprise";
-                insert(moods);
+                checkDialog(moods);
             }
         });
     }
+    private void checkDialog(final String moods) {
+        AlertDialog.Builder finishDialog=new AlertDialog.Builder(this);
+        finishDialog.setTitle("確認");
+        finishDialog.setMessage("您今天的心情是"+moods);
+        DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                insert(moods);
+            }
+        };
+        DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+            }
+        };
+        finishDialog.setNeutralButton("確定",confirmClick);
+        finishDialog.setNegativeButton("重選",cancelClick);
+        finishDialog.show();
+    }
    private void insert(String moods)  {
        dtFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
        date = new Date();

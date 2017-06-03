@@ -28,7 +28,7 @@ public class Mood_Diary_Activity extends AppCompatActivity {
     private void processView() {
         date=(DatePicker)findViewById(R.id.datePicker);
         content=(EditText)findViewById(R.id.txtContent);
-        submit=(Button)findViewById(R.id.submit);
+        submit=(Button)findViewById(R.id.save);
         auth= FirebaseAuth.getInstance();
     }
 

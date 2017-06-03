@@ -46,7 +46,7 @@ public class Main_Activity extends AppCompatActivity {
                 user=edtUser.getText().toString();
                 psw=edtPsw.getText().toString();
                 if(user.equals("")||psw.equals(""))
-                    Toast.makeText(Main_Activity.this, "Please enter your ID and Password~", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main_Activity.this, "請帳號或密碼檢查是否有誤", Toast.LENGTH_SHORT).show();
                 else
                     login(user,psw);
             }
@@ -56,14 +56,14 @@ public class Main_Activity extends AppCompatActivity {
                 user=edtUser.getText().toString();
                 psw=edtPsw.getText().toString();
                 if(user.equals("")||psw.equals(""))
-                    Toast.makeText(Main_Activity.this,  "Please enter your ID and Password~", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main_Activity.this,  "請檢察帳號或密碼是否有誤", Toast.LENGTH_SHORT).show();
                 else
                     createUser(user,psw);
             }
         });
         btnForget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Toast.makeText(Main_Activity.this, "Are you forget your password?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main_Activity.this, "忘記密碼了嗎?", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent();
                 intent.setClass(Main_Activity.this,Question_Activity.class);
                 startActivity(intent);

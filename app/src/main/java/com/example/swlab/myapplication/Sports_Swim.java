@@ -47,7 +47,7 @@ public class Sports_Swim extends AppCompatActivity {
 
     private void processView() {
         edt_cal = (EditText) findViewById(R.id.txtCal);
-        edt_distance = (EditText) findViewById(R.id.txtDistance);
+        edt_distance = (EditText) findViewById(R.id.txtCount);
         edt_time = (EditText) findViewById(R.id.txtTime);
         timer=(TextView)findViewById(R.id.txt_timer);
         save = (Button) findViewById(R.id.btn_save);
