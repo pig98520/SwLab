@@ -26,25 +26,23 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
                     "tmYa6ubl4Ew",
                     "Ns6xmlkjtbg",
                     "vFWpKOlpLnQ"};
-    private YouTubePlayerView youTubePlayerView;
     private Spinner spinner;
     private Button confirm;
     private ArrayAdapter<String> adapter;
     private Bundle bundle;
     private int videoIndex;
-
-    @Override
+    private YouTubePlayerView youTubePlayerView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.leisure_article);
+        setContentView(R.layout.leisure_speech);
         processView();
         processControl();
     }
 
     private void processView() {
-        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        youTubePlayerView=(YouTubePlayerView)findViewById(R.id.youtube_player);
+        youTubePlayerView.initialize(API_KEY,this);
         bundle = getIntent().getExtras();
-        youTubePlayerView.initialize(API_KEY, Leisure_Speech_Activity.this);
         spinner = (Spinner) findViewById(R.id.spinner);
         confirm = (Button) findViewById(R.id.btn_confirm);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, videoArray);
@@ -89,17 +87,42 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
                 videoIndex = Integer.parseInt(bundle.getString("video_id"));
                 youTubePlayer.cueVideo(videoArray[videoIndex]);
             } else
-                youTubePlayer.cueVideo(videoArray[0]);
+                youTubePlayer.cueVideo("NLElzEJPceA");
         }
     }
 
-
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Initial Failed~", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Failured to Initialize!",Toast.LENGTH_LONG).show();
     }
+    private YouTubePlayer.PlaybackEventListener playbackEventListener=new YouTubePlayer.PlaybackEventListener() {
+        @Override
+        public void onPlaying() {
 
-    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
+        }
+
+        @Override
+        public void onPaused() {
+
+        }
+
+        @Override
+        public void onStopped() {
+
+        }
+
+        @Override
+        public void onBuffering(boolean b) {
+
+        }
+
+        @Override
+        public void onSeekTo(int i) {
+
+        }
+    };
+
+    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener=new YouTubePlayer.PlayerStateChangeListener() {
         @Override
         public void onLoading() {
 
@@ -129,32 +152,5 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
         public void onError(YouTubePlayer.ErrorReason errorReason) {
 
         }
-    };
-
-    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
-        @Override
-        public void onPlaying() {
-
-        }
-
-        @Override
-        public void onPaused() {
-
-        }
-
-        @Override
-        public void onStopped() {
-
-        }
-
-        @Override
-        public void onBuffering(boolean b) {
-
-        }
-
-        @Override
-        public void onSeekTo(int i) {
-
-        }
-    };
+    } ;
 }
