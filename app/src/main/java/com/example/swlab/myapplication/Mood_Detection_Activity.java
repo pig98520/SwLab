@@ -27,7 +27,6 @@ public class Mood_Detection_Activity extends AppCompatActivity{
     private Button mButtonChoice2;
     private Button mButtonChoice3;
     private Button mButtonChoice4;
-    private String mAnswer;
     private int mQuestionNumber = 0 ;
     private int mScore=0;
     private FirebaseAuth auth;
@@ -57,11 +56,10 @@ public class Mood_Detection_Activity extends AppCompatActivity{
     private void updateQuestion(){
         if (mQuestionNumber<mQuestionLibrary.getLength() ){
             mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
-            mButtonChoice1.setText(mQuestionLibrary.getChoice(mQuestionNumber, 1));
-            mButtonChoice2.setText(mQuestionLibrary.getChoice(mQuestionNumber, 2));
-            mButtonChoice3.setText(mQuestionLibrary.getChoice(mQuestionNumber, 3));
-            mButtonChoice4.setText(mQuestionLibrary.getChoice(mQuestionNumber, 4));
-            //mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
+            mButtonChoice1.setText(mQuestionLibrary.getChoice(1));
+            mButtonChoice2.setText(mQuestionLibrary.getChoice(2));
+            mButtonChoice3.setText(mQuestionLibrary.getChoice(3));
+            mButtonChoice4.setText(mQuestionLibrary.getChoice(4));
             addScore();
             mQuestionNumber++;
             }

@@ -27,12 +27,11 @@ public class Mood_Detection_Question {
             "18. 我覺得自己很沒用"
     };
 
-    private  String multipleChoice [][] ={
-            {"沒有或極少 (每周: 1天以下)", "有時侯 (每周: 1～2天)", "時常 (每周: 3～4天)", "常常或總是 (每周: 5～7天)"},
-            {"沒有或極少 (每周: 1天以下)", "有時侯 (每周: 1～2天)", "時常 (每周: 3～4天)", "常常或總是 (每周: 5～7天)"},
-            {"沒有或極少 (每周: 1天以下)", "有時侯 (每周: 1～2天)", "時常 (每周: 3～4天)", "常常或總是 (每周: 5～7天)"},
-            {"沒有或極少 (每周: 1天以下)", "有時侯 (每周: 1～2天)", "時常 (每周: 3～4天)", "常常或總是 (每周: 5～7天)"},
-            {"沒有或極少 (每周: 1天以下)", "有時侯 (每周: 1～2天)", "時常 (每周: 3～4天)", "常常或總是 (每周: 5～7天)"}
+    private  String multipleChoice [] ={
+            "沒有或極少 (每周: 1天以下)",
+                "有時侯 (每周: 1～2天)",
+                "時常 (每周: 3～4天)",
+                "常常或總是 (每周: 5～7天)"
     };
 
     public int getLength() {return textQuestions.length; }
@@ -42,8 +41,8 @@ public class Mood_Detection_Question {
         return question;
     }
 
-    public String getChoice(int index, int num){
-        String choice0 = multipleChoice[index] [num-1];
+    public String getChoice( int num){
+        String choice0 = multipleChoice [num-1];
         return choice0;
     }
 }
