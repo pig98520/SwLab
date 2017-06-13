@@ -133,6 +133,7 @@ public class Sports_Squatting extends AppCompatActivity {
         edt_time.setText(timer.getText().toString().trim());
         edt_cal.setText(((min*60+sec)*0.019)+"");
         timer.setText("00:00");
+        start.setText("開始運動");
         min=0;
         sec=0;
         countdownTimer.cancel();
