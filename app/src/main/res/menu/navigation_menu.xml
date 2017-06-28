@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Entertainments"
+        android:title="休閒娛樂"
+        android:icon="@mipmap/ic_tag_faces_black_24dp"/>
+    <item android:id="@+id/Sport"
+        android:title="運動紓壓"
+        android:icon="@mipmap/ic_directions_bike_black_24dp"/>
+    <item android:id="@+id/Music"
+        android:title="音樂治療"
+        android:icon="@mipmap/ic_music_note_black_24dp"/>
+    <item android:id="@+id/Mood"
+        android:title="常見問題"
+        android:icon="@mipmap/ic_favorite_black_24dp"/>
+    <item android:id="@+id/Question"
+        android:title="常見問題"
+        android:icon="@mipmap/ic_question_answer_black_24dp"/>
+    <item android:id="@+id/Logout"
+        android:title="登出"
+        android:icon="@mipmap/ic_person_outline_black_24dp"/>
+</menu>
