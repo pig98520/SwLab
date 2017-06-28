@@ -25,8 +25,7 @@ public class Sports_Rope extends AppCompatActivity {
     private String nowTime;
     private Date date;
     private TextView timer;
-    private Button save;
-    private Button start;
+    private Button finish;
     private int sec =0;
     private int min=0;
     private CountDownTimer countdownTimer;
@@ -50,8 +49,7 @@ public class Sports_Rope extends AppCompatActivity {
         edt_count = (EditText) findViewById(R.id.txtCount);
         edt_time = (EditText) findViewById(R.id.txtTime);
         timer=(TextView)findViewById(R.id.txt_timer);
-        save = (Button) findViewById(R.id.btn_save);
-        start = (Button) findViewById(R.id.btn_start);
+        finish = (Button) findViewById(R.id.btn_start);
         auth = FirebaseAuth.getInstance();
         timer = (TextView)findViewById(R.id.txt_timer);
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -60,31 +58,14 @@ public class Sports_Rope extends AppCompatActivity {
     }
 
     private void processControl() {
-        start.setOnClickListener(new View.OnClickListener() {
+        finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isTimer){
-                    isTimer=true;
-                    timerStart();
-                }
-                else
-                {
-                    isTimer=false;
-                    timerStop();
-                }
+                isTimer=false;
+                timerStop();
+            }
+        });
 
-            }
-        });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cal=edt_cal.getText().toString().trim();
-                count = edt_count.getText().toString().trim();
-                sportTime=edt_time.getText().toString().trim();
-                insertData(nowTime,cal, count,sportTime);
-                Toast.makeText(Sports_Rope.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
-            }
-        });
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +73,11 @@ public class Sports_Rope extends AppCompatActivity {
                     countdownTimer.cancel();
                     isTimer=false;
                 }
-                else {
+                else if (min==0&&sec==0){
+                    timerStart();
+                    isTimer=true;
+                }
+                else{
                     countdownTimer.start();
                     isTimer=true;
                 }
@@ -102,6 +87,7 @@ public class Sports_Rope extends AppCompatActivity {
 
 
     private void timerStart() {
+        finish.setVisibility(View.VISIBLE);
         countdownTimer=new CountDownTimer(1000000000000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -118,7 +104,7 @@ public class Sports_Rope extends AppCompatActivity {
                     timer.setText("0"+min+":0"+sec);
                 else
                     timer.setText(min+":"+sec);
-                start.setText("結束運動");
+                finish.setText("結束運動");
             }
 
             @Override
@@ -133,7 +119,7 @@ public class Sports_Rope extends AppCompatActivity {
         edt_time.setText(timer.getText().toString().trim());
         edt_cal.setText(((min*60+sec)*0.137)+"");
         timer.setText("00:00");
-        start.setText("開始運動");
+        finish.setText("開始運動");
         min=0;
         sec=0;
         countdownTimer.cancel();
@@ -154,6 +140,7 @@ public class Sports_Rope extends AppCompatActivity {
                 count = edt_count.getText().toString().trim();
                 sportTime=edt_time.getText().toString().trim();
                 insertData(nowTime,cal, count,sportTime);
+                finish.setVisibility(View.INVISIBLE);
                 Toast.makeText(Sports_Rope.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
             }
         };
