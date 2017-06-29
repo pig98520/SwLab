@@ -11,7 +11,7 @@
         android:title="音樂治療"
         android:icon="@mipmap/ic_music_note_black_24dp"/>
     <item android:id="@+id/Mood"
-        android:title="常見問題"
+        android:title="心情紀錄"
         android:icon="@mipmap/ic_favorite_black_24dp"/>
     <item android:id="@+id/Question"
         android:title="常見問題"

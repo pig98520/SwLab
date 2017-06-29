@@ -1,9 +1,12 @@
 package com.example.swlab.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +17,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.example.swlab.myapplication.R.*;
+import static com.example.swlab.myapplication.R.id;
+import static com.example.swlab.myapplication.R.layout;
 
 public class Main_Activity extends AppCompatActivity {
     private Button btnLogin;
@@ -25,7 +29,32 @@ public class Main_Activity extends AppCompatActivity {
     private String user;
     private String psw;
     private FirebaseAuth auth= FirebaseAuth.getInstance();
+    private boolean isdoubleClick=false;
 
+    @Override
+    public void onBackPressed() {
+        if(!isdoubleClick)
+        {
+            Toast.makeText(Main_Activity.this,"雙擊以退出",Toast.LENGTH_LONG).show();
+            isdoubleClick=true;
+        }
+        else
+        {
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }
+        new CountDownTimer(5000,1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+            @Override
+            public void onFinish() {
+                isdoubleClick=false;
+            }
+        }.start();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +92,7 @@ public class Main_Activity extends AppCompatActivity {
         });
         btnForget.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Toast.makeText(Main_Activity.this, "忘記密碼了嗎?", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent();
-                intent.setClass(Main_Activity.this,Question_Activity.class);
-                startActivity(intent);
+            forgetDialog();
             }
         });
     }
@@ -102,6 +128,41 @@ public class Main_Activity extends AppCompatActivity {
                         Toast.makeText(Main_Activity.this,"註冊失敗，請檢查帳號是否存在。", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    private void forgetDialog() {
+        AlertDialog.Builder forgetDialog=new AlertDialog.Builder(this);
+        forgetDialog.setTitle("忘記密碼");
+        forgetDialog.setMessage("是否發送忘記密碼E-mail聯絡客服?\n\n"+"若無安裝郵件軟體，請寫信到swlabgroup2@gmail.com");
+        DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent sendMail = new Intent(Intent.ACTION_SEND);
+                sendMail.setType("message/rfc822");
+                sendMail.putExtra(Intent.EXTRA_EMAIL  , new String[]{"swlabgroup2@gmail.com"});
+                sendMail.putExtra(Intent.EXTRA_SUBJECT, "我忘記我的APP密碼");
+                sendMail.putExtra(Intent.EXTRA_TEXT   , "請完成以下資料，我們將盡快發送新的密碼至您的Mail\n\n\n" +
+                        "--------------------------------------------------\n"+
+                        "姓名:\n\n"+
+                        "郵件:\n\n"+
+                        "備用郵件:\n\n"+
+                        "--------------------------------------------------"+
+                        "\n\n\n感謝您的填寫，我們將盡快為您處理");
+                try {
+                    startActivity(Intent.createChooser(sendMail, "郵件傳送中..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(Main_Activity.this, "傳送郵件失敗", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+        DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        };
+        forgetDialog.setNeutralButton("是",confirmClick);
+        forgetDialog.setNegativeButton("否",cancelClick);
+        forgetDialog.show();
     }
 
 }
