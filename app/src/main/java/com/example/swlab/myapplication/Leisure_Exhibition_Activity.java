@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -70,7 +72,9 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
 
         public void setPhoto(DB_Lerisure_Exhibition lerisure) {
             title.setText(lerisure.getTitle());
-            content.setText(lerisure.getContent());
+            /* content.setText(lerisure.getContent());*/
+            content.setText(Html.fromHtml("<a href="+lerisure.getContent()+">官方網站</a> "));
+            content.setMovementMethod(LinkMovementMethod.getInstance());
             Glide.with(image.getContext())
                     .load(lerisure.getImageUrl())
                     .into(image);
