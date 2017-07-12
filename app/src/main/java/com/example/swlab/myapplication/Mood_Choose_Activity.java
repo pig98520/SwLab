@@ -1,6 +1,7 @@
 package com.example.swlab.myapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,12 @@ public class Mood_Choose_Activity extends AppCompatActivity {
     private ImageButton surprise;
     private String moods;
     private FirebaseAuth auth;
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Mood_Choose_Activity.this, Mood_Activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

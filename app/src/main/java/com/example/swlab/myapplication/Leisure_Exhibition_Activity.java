@@ -1,5 +1,6 @@
 package com.example.swlab.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Leisure_Exhibition_Activity extends AppCompatActivity {
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Leisure_Exhibition_Activity.this, Leisure_Activity.class);
+        startActivity(intent);
+    }
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

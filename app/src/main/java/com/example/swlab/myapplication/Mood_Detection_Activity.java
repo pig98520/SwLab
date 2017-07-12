@@ -30,7 +30,12 @@ public class Mood_Detection_Activity extends AppCompatActivity{
     private int mQuestionNumber = 0 ;
     private int mScore=0;
     private FirebaseAuth auth;
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Mood_Detection_Activity.this, Mood_Activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

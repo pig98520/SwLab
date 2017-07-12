@@ -32,6 +32,14 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
     private Bundle bundle;
     private int videoIndex;
     private YouTubePlayerView youTubePlayerView;
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Leisure_Speech_Activity.this, Leisure_Activity.class);
+        startActivity(intent);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leisure_speech);

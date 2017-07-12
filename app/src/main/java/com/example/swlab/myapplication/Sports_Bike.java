@@ -1,6 +1,7 @@
 package com.example.swlab.myapplication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
@@ -34,7 +35,12 @@ public class Sports_Bike extends AppCompatActivity {
     private String distance;
     private String sportTime;
     private FirebaseAuth auth;
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Sports_Bike.this, Sports_Activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

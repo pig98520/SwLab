@@ -1,7 +1,8 @@
 package com.example.swlab.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +18,12 @@ public class Mood_Diary_Activity extends AppCompatActivity {
     private String moodDate;
     private String Content;
     private FirebaseAuth auth;
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Mood_Diary_Activity.this, Mood_Activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
