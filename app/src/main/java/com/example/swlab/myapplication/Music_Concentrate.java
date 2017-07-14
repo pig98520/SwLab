@@ -23,9 +23,14 @@ public class Music_Concentrate extends AppCompatActivity {
     private MediaPlayer music;
     private Firebase musicFirebaseRef;
     private String musicUrl = " ";
+    private int music_temp;
+    private int music_index=1;
     private Button backBtn;
     private Button setBtn;
     private Button playBtn;
+    private Button nextBtn;
+    private Button priviousBtn;
+    private boolean isRandom=false;
 
     @Override
     public void onBackPressed() {
@@ -45,8 +50,11 @@ public class Music_Concentrate extends AppCompatActivity {
     }
 
     private void setMusic() {
+        if(isRandom)
+            music_index=(int) (Math.random()*15+1);
+
         music=new MediaPlayer(); //建立一個media player
-        musicFirebaseRef=new Firebase("https://swlabapp.firebaseio.com/server/concentrate/"+(int) (Math.random()*15+1)); //取得firebase網址 用亂數取得節點網址
+        musicFirebaseRef=new Firebase("https://swlabapp.firebaseio.com/server/concentrate/"+music_index); //取得firebase網址 用亂數取得節點網址
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("載入音樂中,請稍後");
         progressDialog.setIcon(R.drawable.loading_24);
@@ -62,6 +70,8 @@ public class Music_Concentrate extends AppCompatActivity {
                     music.setDataSource(musicUrl); //設定media的路徑
                     music.prepare();
                     progressDialog.dismiss();
+                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    music.start();
                 } catch (IOException e) {
                     Toast.makeText(Music_Concentrate.this,"讀取不到音樂", Toast.LENGTH_LONG).show();
                 }
@@ -75,6 +85,8 @@ public class Music_Concentrate extends AppCompatActivity {
 
     private void processView() {
         playBtn = (Button) findViewById(R.id.play_btn);
+        nextBtn=(Button)findViewById(R.id.next_btn);
+        priviousBtn=(Button)findViewById(R.id.previeous_btn);
         backBtn = (Button) findViewById(R.id.back_btn);
         setBtn = (Button) findViewById(R.id.set_btn);
         progressDialog = new ProgressDialog(this);
@@ -103,14 +115,35 @@ public class Music_Concentrate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(music.isPlaying()) {
-                    music.stop();
+                    music.pause();
                     playBtn.setBackgroundResource(android.R.drawable.ic_media_play);
-                    setMusic();
                 }
                 else {
                     music.start();
                     playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
                 }
+            }
+        });
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                music.stop();
+                if(music_index==15)
+                    music_index=1;
+                else
+                    music_index+=1;
+                setMusic();
+            }
+        });
+        priviousBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                music.stop();
+                if(music_index==1)
+                    music_index=15;
+                else
+                    music_index-=1;
+                setMusic();
             }
         });
     }
