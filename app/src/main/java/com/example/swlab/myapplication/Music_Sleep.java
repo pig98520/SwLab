@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -30,7 +32,10 @@ public class Music_Sleep extends AppCompatActivity {
     private Button playBtn;
     private Button nextBtn;
     private Button priviousBtn;
+    private String mode;
+    private int time=0;
     private boolean isRandom=false;
+    private CountDownTimer countdownTimer;
 
     @Override
     public void onBackPressed() {
@@ -45,8 +50,43 @@ public class Music_Sleep extends AppCompatActivity {
         setContentView(R.layout.music_concentrate);
         Firebase.setAndroidContext(this);
         processView();
+        defaulMode();
         setMusic();
         processControl();
+    }
+
+    private void defaulMode() {
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle!=null) {
+            time = bundle.getInt("time");
+            mode = bundle.getString("mode");
+            if(mode.equals("random"))
+                isRandom=true;
+            else
+                isRandom=false;
+        }
+        if(time!=0)
+            timerStart();
+        Log.i("Test",time+"\n"+mode);
+    }
+
+    private void timerStart() {
+        countdownTimer = new CountDownTimer(time *60* 1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                if(music.isPlaying())
+                    music.stop();
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+        };
+        countdownTimer.start();
     }
 
     private void setMusic() {
@@ -73,6 +113,7 @@ public class Music_Sleep extends AppCompatActivity {
                     playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
                     music.start();
                 } catch (IOException e) {
+                    progressDialog.dismiss();
                     Toast.makeText(Music_Sleep.this,"讀取不到音樂", Toast.LENGTH_LONG).show();
                 }
             }

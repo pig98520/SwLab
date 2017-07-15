@@ -12,7 +12,7 @@ import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Music_Set extends AppCompatActivity {
-    private Button setBtn;
+    private Button backBtn;
     private Button saveBtn;
     private EditText hour;
     private EditText min;
@@ -33,17 +33,18 @@ public class Music_Set extends AppCompatActivity {
     }
 
     private void processView() {
-        setBtn = (Button)findViewById(R.id.back_btn);
+        backBtn = (Button)findViewById(R.id.back_btn);
         saveBtn=(Button)findViewById(R.id.save_btn);
         hour= (EditText) findViewById(R.id.hr_edit);
         min=(EditText)findViewById(R.id.min_edit);
         random=(RadioButton)findViewById(R.id.ram_radio);
         normal=(RadioButton)findViewById(R.id.normal_radio);
         auth= FirebaseAuth.getInstance();
+        firebaseRef=new Firebase("https://swlabapp.firebaseio.com/user/musicsetting/"+auth.getCurrentUser().getUid());
     }
 
     private void processContral() {
-        setBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -75,15 +76,51 @@ public class Music_Set extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 time=Integer.parseInt(hour.getText().toString().trim())*60
                     +Integer.parseInt(min.getText().toString().trim());
                 if(random.isChecked())
                     mode="random";
                 else
                     mode="normal";
-                firebaseRef=new Firebase("https://swlabapp.firebaseio.com/user/musicsetting/"+auth.getCurrentUser().getUid());
-                firebaseRef.child("mode").setValue(mode);
-                firebaseRef.child("time").setValue(time);
+
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                switch (Music_Activity.returnFlag)  {
+                    case 'r' : {
+                        intent.setClass(Music_Set.this, Music_Relax.class);
+                        startActivity(intent);
+                        bundle.putString("mode", mode);
+                        bundle.putInt("time",time);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 'c' : {
+                        intent.setClass(Music_Set.this, Music_Concentrate.class);
+                        bundle.putString("mode", mode);
+                        bundle.putInt("time",time);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 'e' : {
+                        intent.setClass(Music_Set.this, Music_Concentrate.class);
+                        bundle.putString("mode", mode);
+                        bundle.putInt("time",time);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 's' : {
+                        intent.setClass(Music_Set.this, Music_Concentrate.class);
+                        bundle.putString("mode", mode);
+                        bundle.putInt("time",time);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+                    }
+                }
             }
         });
     }
