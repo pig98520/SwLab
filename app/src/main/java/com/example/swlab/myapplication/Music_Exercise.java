@@ -7,10 +7,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -36,6 +39,9 @@ public class Music_Exercise extends AppCompatActivity {
     private int time=0;
     private boolean isRandom=false;
     private CountDownTimer countdownTimer;
+    private SeekBar seekBar;
+    private Handler handler;
+    private Runnable updateThread;
 
     @Override
     public void onBackPressed() {
@@ -46,8 +52,9 @@ public class Music_Exercise extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.music_concentrate);
+        setContentView(R.layout.music_exercise);
         Firebase.setAndroidContext(this);
         processView();
         defaulMode();
@@ -112,6 +119,8 @@ public class Music_Exercise extends AppCompatActivity {
                     progressDialog.dismiss();
                     playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
                     music.start();
+                    setSeekbar();
+                    handler.post(updateThread);
                 } catch (IOException e) {
                     progressDialog.dismiss();
                     Toast.makeText(Music_Exercise.this,"讀取不到音樂", Toast.LENGTH_LONG).show();
@@ -122,6 +131,18 @@ public class Music_Exercise extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setSeekbar() {
+        seekBar.setMax(music.getDuration());
+        handler=new Handler();
+        updateThread=new Runnable() {
+            @Override
+            public void run() {
+                seekBar.setProgress(music.getCurrentPosition());
+                handler.postDelayed(updateThread,100);
+            }
+        };
     }
 
     private void processView() {
@@ -147,6 +168,7 @@ public class Music_Exercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                Music_Activity.returnFlag='e';
                 intent.setClass(Music_Exercise.this, Music_Set.class);
                 startActivity(intent);
                 music.stop();

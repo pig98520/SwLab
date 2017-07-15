@@ -19,11 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Music_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static char returnFlag = ' ';
-    private Button nextPageBtn1;
-    private Button nextPageBtn2;
-    private Button nextPageBtn3;
-    private Button nextPageBtn4;
-    private Button nextPageBtn5;
+    private Button relax;
+    private Button concentrate;
+    private Button sleep;
+    private Button exercise;
+    private Button back;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigateionView;
@@ -61,11 +61,11 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
         processContral();
     }
     private void processView() {
-        nextPageBtn1 = (Button)findViewById(R.id.relax_btn);
-        nextPageBtn2 = (Button)findViewById(R.id.concentrate_btn);
-        nextPageBtn3 = (Button)findViewById(R.id.sleep_btn);
-        nextPageBtn4 = (Button)findViewById(R.id.exercise_btn);
-        nextPageBtn5 = (Button)findViewById(R.id.back_btn);
+        relax = (Button)findViewById(R.id.relax_btn);
+        concentrate = (Button)findViewById(R.id.concentrate_btn);
+        sleep = (Button)findViewById(R.id.sleep_btn);
+        exercise = (Button)findViewById(R.id.exercise_btn);
+        back = (Button)findViewById(R.id.back_btn);
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Music_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
@@ -73,7 +73,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
     }
 
     private void processContral() {
-        nextPageBtn1.setOnClickListener(new View.OnClickListener() {
+        relax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -82,7 +82,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 startActivity(intent);
             }
         });
-        nextPageBtn2.setOnClickListener(new View.OnClickListener() {
+        concentrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -91,7 +91,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 startActivity(intent);
             }
         });
-        nextPageBtn3.setOnClickListener(new View.OnClickListener() {
+        sleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -101,7 +101,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
             }
         });
 
-        nextPageBtn4.setOnClickListener(new View.OnClickListener() {
+        exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -111,7 +111,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
             }
         });
 
-        nextPageBtn5.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
