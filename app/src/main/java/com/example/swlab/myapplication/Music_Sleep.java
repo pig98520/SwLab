@@ -165,6 +165,7 @@ public class Music_Sleep extends AppCompatActivity {
         backBtn = (Button) findViewById(R.id.back_btn);
         setBtn = (Button) findViewById(R.id.set_btn);
         progressDialog = new ProgressDialog(this);
+        seekBar=(SeekBar)findViewById(R.id.music_bar);
     }
 
     private void processControl() {

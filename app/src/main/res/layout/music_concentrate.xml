@@ -60,7 +60,7 @@
         app:srcCompat="@android:drawable/ic_media_previous" />
 
     <SeekBar
-        android:id="@+id/play_bar"
+        android:id="@+id/music_bar"
         android:layout_width="259dp"
         android:layout_height="41dp"
         app:layout_constraintBottom_toBottomOf="parent"
