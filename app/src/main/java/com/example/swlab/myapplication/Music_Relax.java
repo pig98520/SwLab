@@ -114,13 +114,15 @@ public class Music_Relax extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 musicUrl=dataSnapshot.getValue(String.class); //取得節點內的資料
                 try {
+                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
                     music.setDataSource(musicUrl); //設定media的路徑
                     music.prepare();
                     progressDialog.dismiss();
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    mCompletionListener();
                     music.start();
                     setSeekbar();
                     handler.post(updateThread);
+
                 } catch (IOException e) {
                     progressDialog.dismiss();
                     Toast.makeText(Music_Relax.this,"讀取不到音樂", Toast.LENGTH_LONG).show();
@@ -129,6 +131,19 @@ public class Music_Relax extends AppCompatActivity {
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
+            }
+        });
+    }
+
+    private void mCompletionListener() {
+        music.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if(music_index==30)
+                    music_index=1;
+                else
+                    music_index+=1;
+                setMusic();
             }
         });
     }
@@ -227,16 +242,6 @@ public class Music_Relax extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
-        music.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                if(music_index==30)
-                    music_index=1;
-                else
-                    music_index+=1;
-                setMusic();
             }
         });
     }

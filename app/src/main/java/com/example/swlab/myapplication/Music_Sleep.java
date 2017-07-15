@@ -114,10 +114,11 @@ public class Music_Sleep extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 musicUrl=dataSnapshot.getValue(String.class); //取得節點內的資料
                 try {
+                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
                     music.setDataSource(musicUrl); //設定media的路徑
                     music.prepare();
                     progressDialog.dismiss();
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    mCompletionListener();
                     music.start();
                     setSeekbar();
                     handler.post(updateThread);
@@ -129,6 +130,18 @@ public class Music_Sleep extends AppCompatActivity {
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
+            }
+        });
+    }
+    private void mCompletionListener() {
+        music.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if(music_index==3)
+                    music_index=1;
+                else
+                    music_index+=1;
+                setMusic();
             }
         });
     }
@@ -224,16 +237,6 @@ public class Music_Sleep extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
-        music.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                if(music_index==3)
-                    music_index=1;
-                else
-                    music_index+=1;
-                setMusic();
             }
         });
     }
