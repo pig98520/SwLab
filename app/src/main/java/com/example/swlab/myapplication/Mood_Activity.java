@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Mood_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private Button back_btn;
+    private Button menu_btn;
     private Button decetion;
     private Button mood;
     private Button diary;
@@ -66,6 +68,8 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Mood_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
+        back_btn=(Button)findViewById(R.id.back_btn);
+        menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
     private void processControllers(){
@@ -96,6 +100,20 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent();
                 intent.setClass(Mood_Activity.this,Mood_Sum_Activity.class);
                 startActivity(intent);
+            }
+        });
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mood_Activity.this  , Index_Activity.class);
+                startActivity(intent);
+            }
+        });
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
             }
         });
     }

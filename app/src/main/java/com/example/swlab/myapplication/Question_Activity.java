@@ -12,6 +12,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ import java.util.List;
 import static com.example.swlab.myapplication.R.layout.question_index;
 
 public class Question_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Button back_btn;
+    private Button menu_btn;
     private ListView listview;
     private List<DB_Question> questionList;
     private DatabaseReference databaseRef;
@@ -75,11 +79,26 @@ public class Question_Activity extends AppCompatActivity implements NavigationVi
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Question_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
+        back_btn=(Button)findViewById(R.id.back_btn);
+        menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
 
     private void processControl() {
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Question_Activity.this  , Index_Activity.class);
+                startActivity(intent);
+            }
+        });
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
     @Override

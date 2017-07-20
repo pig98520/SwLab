@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Leisure_Activity extends Activity implements NavigationView.OnNavigationItemSelectedListener{
+    private Button back_btn;
+    private Button menu_btn;
     private Button nextPageBtn;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
@@ -60,6 +62,8 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Leisure_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
+        back_btn=(Button)findViewById(R.id.back_btn);
+        menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
     private void processControllers(){
@@ -106,7 +110,20 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 startActivity(intent);
             }
         });
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Leisure_Activity.this  , Index_Activity.class);
+                startActivity(intent);
+            }
+        });
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

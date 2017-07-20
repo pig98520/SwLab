@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Sports_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Button menu_btn;
+    private Button back_btn;
     private Button record;
     private Button notification;
     private DrawerLayout drawer;
@@ -62,6 +64,8 @@ public class Sports_Activity extends AppCompatActivity implements NavigationView
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Sports_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
+        back_btn=(Button)findViewById(R.id.back_btn);
+        menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
     private void processControllers(){
@@ -80,7 +84,22 @@ public class Sports_Activity extends AppCompatActivity implements NavigationView
                 startActivity(intent);
             }
         });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Sports_Activity.this  , Index_Activity.class);
+                startActivity(intent);
             }
+        });
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -23,7 +23,8 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
     private Button concentrate;
     private Button sleep;
     private Button exercise;
-    private Button back;
+    private Button menu_btn;
+    private Button back_btn;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigateionView;
@@ -65,10 +66,12 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
         concentrate = (Button)findViewById(R.id.concentrate_btn);
         sleep = (Button)findViewById(R.id.sleep_btn);
         exercise = (Button)findViewById(R.id.exercise_btn);
-        back = (Button)findViewById(R.id.back_btn);
+        back_btn = (Button)findViewById(R.id.back_btn);
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Music_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
+        back_btn=(Button)findViewById(R.id.back_btn);
+        menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
 
@@ -111,12 +114,18 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(Music_Activity.this  , Index_Activity.class);
                 startActivity(intent);
+            }
+        });
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
             }
         });
     }
