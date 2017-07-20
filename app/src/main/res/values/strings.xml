@@ -22,11 +22,11 @@
     <string name="map">地圖</string>
     <string name="sportsevents">更換項目</string>
     <string name="detection">基礎檢測量表</string>
-    <string name="mood">每日心情指數</string>
+    <string name="mood" translatable="false">心情紀錄</string>
     <string name="diary">心情日記</string>
     <string name="sum">統計量表</string>
     <string name="back">返回</string>
-    <string name="music">Music</string>
+    <string name="music">音樂治療</string>
     <string name="relax">放鬆紓壓</string>
     <string name="concentrate">集中注意力</string>
     <string name="sleep">睡眠</string>
@@ -69,4 +69,8 @@
     <string name="Save">儲存</string>
     <string name="select">選擇影片</string>
     <string name="sportfinish">結束運動</string>
+    <string name="Leisure">休閒娛樂</string>
+    <string name="Mood">心情紀錄</string>
+    <string name="choose">心情指數</string>
+    <string name="sport">運動紓壓</string>
 </resources>
