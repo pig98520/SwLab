@@ -96,5 +96,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Sports_Swim"
             android:screenOrientation="portrait" />
+        <receiver android:name=".AlarmNotificationReceiver"/>
     </application>
 </manifest>
