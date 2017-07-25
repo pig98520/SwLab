@@ -75,7 +75,8 @@ public class Sports_Notification_Activity extends AppCompatActivity {
             cal.set(Calendar.SECOND, 0);
             cal.set(Calendar.MILLISECOND, 0);
             alarmManager(cal);
-            Toast.makeText(Sports_Notification_Activity.this,cal.getTime().toString(),Toast.LENGTH_LONG).show();
+            if(Calendar.getInstance().getTime().before(cal.getTime()))
+                Toast.makeText(Sports_Notification_Activity.this,cal.getTime().toString(),Toast.LENGTH_LONG).show();
         }
     };
 
@@ -86,7 +87,6 @@ public class Sports_Notification_Activity extends AppCompatActivity {
             Toast.makeText(Sports_Notification_Activity.this,"時間過去就回不來了喔~~",Toast.LENGTH_LONG).show();
         }
         else
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendarTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        //alarmManager.set(AlarmManager.RTC_WAKEUP,calendarTime.getTimeInMillis(), pendingIntent);
+            manager.set(AlarmManager.RTC_WAKEUP, calendarTime.getTimeInMillis(), pendingIntent);
     }
 }

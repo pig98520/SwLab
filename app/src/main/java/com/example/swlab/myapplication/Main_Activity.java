@@ -17,6 +17,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.example.swlab.myapplication.R.id;
 import static com.example.swlab.myapplication.R.layout;
 
@@ -109,7 +112,7 @@ public class Main_Activity extends AppCompatActivity {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Main_Activity.this,"請填入帳號和密碼。", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main_Activity.this,"請檢察帳號和密碼。。", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -125,10 +128,23 @@ public class Main_Activity extends AppCompatActivity {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Main_Activity.this,"註冊失敗，請檢查帳號是否存在。", Toast.LENGTH_SHORT).show();
+                        if(!isEmailValid(user))
+                            Toast.makeText(Main_Activity.this,"帳號必須為電子郵件。", Toast.LENGTH_SHORT).show();
+                        else if(psw.length()<6)
+                            Toast.makeText(Main_Activity.this,"密碼至少為六碼。", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(Main_Activity.this,"註冊失敗，請檢查帳號是否已存在。", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
     private void forgetDialog() {
         AlertDialog.Builder forgetDialog=new AlertDialog.Builder(this);
         forgetDialog.setTitle("忘記密碼");
