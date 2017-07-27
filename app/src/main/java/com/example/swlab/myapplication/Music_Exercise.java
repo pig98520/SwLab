@@ -105,7 +105,7 @@ public class Music_Exercise extends AppCompatActivity {
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("載入音樂中,請稍後");
         progressDialog.setIcon(R.drawable.loading_24);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setProgressStyle(R.style.DialogCustom);
         progressDialog.setIndeterminate(true);
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         progressDialog.show();
