@@ -5,10 +5,12 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,8 +41,9 @@ public class Sports_Notification_Activity extends AppCompatActivity {
     private Firebase databaseRef;
     private Firebase dbRef;
     private Calendar cal;
-    private int id;
-    private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    private int alarm_id;
+    private int delete_id;
+    private SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private PendingIntent pendingIntent;
     private Intent intent;
     private AlarmManager manager;
@@ -114,7 +117,27 @@ public class Sports_Notification_Activity extends AppCompatActivity {
                     @Override
                     public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
                         for(DataSnapshot querySnapshot: dataSnapshot.getChildren()){
-                            Toast.makeText(Sports_Notification_Activity.this,querySnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
+                            delete_id =Integer.parseInt(querySnapshot.getKey());
+                            AlertDialog.Builder deleteDialog=new AlertDialog.Builder(Sports_Notification_Activity.this);
+                            deleteDialog.setTitle("刪除");
+                            deleteDialog.setMessage("確定要刪除提醒?");
+                            DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    databaseRef.child(delete_id+"").removeValue();
+                                    pendingIntent = PendingIntent.getBroadcast(Sports_Notification_Activity.this, delete_id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                    manager.cancel(pendingIntent);
+                                }
+                            };
+                            DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            };
+                            deleteDialog.setNeutralButton("確定",confirmClick);
+                            deleteDialog.setNegativeButton("取消",cancelClick);
+                            deleteDialog.show();
                         }
                     }
 
@@ -149,18 +172,19 @@ public class Sports_Notification_Activity extends AppCompatActivity {
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void alarmManager(Calendar calendarTime) {
-        id=(int) System.currentTimeMillis();
-        pendingIntent = PendingIntent.getBroadcast(this,id , intent, 0);
+        alarm_id =(int) System.currentTimeMillis();
+        pendingIntent = PendingIntent.getBroadcast(this, alarm_id, intent, 0);
         if(calendarTime.before(Calendar.getInstance()))
             Toast.makeText(Sports_Notification_Activity.this,"時間過去就回不來了喔~~",Toast.LENGTH_LONG).show();
         else{
-            manager.set(AlarmManager.RTC_WAKEUP, calendarTime.getTimeInMillis(), pendingIntent);
-            saveReminder(cal,id);
+            manager.setExact(AlarmManager.RTC_WAKEUP, calendarTime.getTimeInMillis(), pendingIntent);
+            saveReminder(cal, alarm_id);
         }
     }
 
-    private void saveReminder(Calendar cal, int id) {
-            databaseRef.child(id+"").child("date").setValue(sdf.format(cal.getTime()).toString());
+    private void saveReminder(Calendar cal, int alarm_id) {
+            databaseRef.child(alarm_id+"").child("date").setValue(sdf.format(cal.getTime()).toString());
     }
 }
