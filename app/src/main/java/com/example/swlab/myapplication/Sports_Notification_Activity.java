@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
@@ -107,7 +109,20 @@ public class Sports_Notification_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView notifiText=(TextView)view.findViewById(R.id.notifiText);
-                Toast.makeText(Sports_Notification_Activity.this,notifiText.getText().toString(),Toast.LENGTH_LONG).show();
+                Query query = dbRef.child("user").child("reminder").child(auth.getCurrentUser().getUid()).orderByChild("date").equalTo(notifiText.getText().toString());
+                query.addValueEventListener(new com.firebase.client.ValueEventListener() {
+                    @Override
+                    public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {
+                        for(DataSnapshot querySnapshot: dataSnapshot.getChildren()){
+                            Toast.makeText(Sports_Notification_Activity.this,querySnapshot.getKey().toString(),Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
             }
         });
     }
@@ -146,6 +161,6 @@ public class Sports_Notification_Activity extends AppCompatActivity {
     }
 
     private void saveReminder(Calendar cal, int id) {
-            databaseRef.child(id+"").setValue(sdf.format(cal.getTime()).toString());
+            databaseRef.child(id+"").child("date").setValue(sdf.format(cal.getTime()).toString());
     }
 }
