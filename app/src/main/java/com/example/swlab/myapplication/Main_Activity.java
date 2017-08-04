@@ -88,7 +88,7 @@ public class Main_Activity extends AppCompatActivity {
                 user=edtUser.getText().toString();
                 psw=edtPsw.getText().toString();
                 if(user.equals("")||psw.equals(""))
-                    Toast.makeText(Main_Activity.this,  "請檢察帳號或密碼是否有誤", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main_Activity.this,  "請檢查帳號或密碼是否有誤", Toast.LENGTH_SHORT).show();
                 else
                     createUser(user,psw);
             }
@@ -112,7 +112,7 @@ public class Main_Activity extends AppCompatActivity {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Main_Activity.this,"請檢察帳號和密碼。。", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main_Activity.this,"請檢查帳號和密碼", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -10,8 +10,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -76,6 +79,7 @@ public class Sports_Notification_Activity extends AppCompatActivity {
         dbRef=new Firebase("https://swlabapp.firebaseio.com/");
         databaseRef= dbRef.child("user").child("reminder").child(auth.getCurrentUser().getUid());
         listview=(ListView)findViewById(R.id.listView);
+        listview.setClickable(true);
         notificationList=new ArrayList<>();
         cal = Calendar.getInstance();
         manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -99,6 +103,13 @@ public class Sports_Notification_Activity extends AppCompatActivity {
                         }
                     }
                 });
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView notifiText=(TextView)view.findViewById(R.id.notifiText);
+                Toast.makeText(Sports_Notification_Activity.this,notifiText.getText().toString(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
     protected Dialog onCreateDialog(int id){
         if(id==1) {

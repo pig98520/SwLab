@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class Sports_Notification_List extends ArrayAdapter<DB_Sports_Notification> {
     private Activity context;
     private List<DB_Sports_Notification> notificationList;
-    private CheckedTextView date;
+    private TextView date;
 
     public Sports_Notification_List(Activity context, List<DB_Sports_Notification> notificationList){
         super(context,R.layout.question_list,notificationList);
@@ -31,7 +31,7 @@ public class Sports_Notification_List extends ArrayAdapter<DB_Sports_Notificatio
         LayoutInflater inflater=context.getLayoutInflater();
         View listViewItem=inflater.inflate(R.layout.sports_notification_list,null,true);
 
-        date=(CheckedTextView)listViewItem.findViewById(R.id.checkedTextView) ;
+        date=(TextView)listViewItem.findViewById(R.id.notifiText) ;
         DB_Sports_Notification db_sports_notification=notificationList.get(position);
         date.setText(db_sports_notification.getDate());
 
