@@ -29,10 +29,9 @@ public class Sports_Notification_Activity extends AppCompatActivity {
     private DatePicker datePicker;
     private ListView listview;
     private List<DB_Sports_Notification> notificationList;
-    private DB_Sports_Notification_List adapter;
+    private Sports_Notification_List adapter;
     private FirebaseAuth auth;
     private Firebase databaseRef;
-    private Firebase dateRef;
     private Firebase dbRef;
     private Calendar cal;
     private int id;
@@ -60,7 +59,7 @@ public class Sports_Notification_Activity extends AppCompatActivity {
                     DB_Sports_Notification notifi=notifiSnapshot.getValue(DB_Sports_Notification.class);
                     notificationList.add(notifi);
                 }
-                adapter=new DB_Sports_Notification_List(Sports_Notification_Activity.this,notificationList);
+                adapter=new Sports_Notification_List(Sports_Notification_Activity.this,notificationList);
                 listview.setAdapter(adapter);
             }
 
@@ -69,23 +68,6 @@ public class Sports_Notification_Activity extends AppCompatActivity {
 
             }
         });
-        /*databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                notificationList.clear();
-                for(DataSnapshot notifiSnapshot : dataSnapshot.getChildren()){
-                    DB_Sports_Notification notifi=notifiSnapshot.getValue(DB_Sports_Notification.class);
-                    notificationList.add(notifi);
-                }
-                adapter=new DB_Sports_Notification_List(Sports_Notification_Activity.this,notificationList);
-                listview.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
     }
 
     private void processView() {
@@ -117,7 +99,6 @@ public class Sports_Notification_Activity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
     protected Dialog onCreateDialog(int id){
         if(id==1) {

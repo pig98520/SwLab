@@ -15,13 +15,13 @@ import java.util.List;
  * Created by pig98520 on 2017/5/15.
  */
 
-public class DB_Question_List extends ArrayAdapter<DB_Question>{
+public class Question_List extends ArrayAdapter<DB_Question>{
     private Activity context;
     private List<DB_Question> questionList;
     private TextView question;
     private TextView answer;
 
-    public DB_Question_List(Activity context, List<DB_Question> questionList){
+    public Question_List(Activity context, List<DB_Question> questionList){
         super(context,R.layout.question_list,questionList);
         this.context=context;
         this.questionList=questionList;

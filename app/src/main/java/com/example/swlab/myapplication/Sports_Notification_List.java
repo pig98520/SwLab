@@ -15,12 +15,12 @@ import java.util.List;
  * Created by pig98520 on 2017/8/4.
  */
 
-public class DB_Sports_Notification_List extends ArrayAdapter<DB_Sports_Notification> {
+public class Sports_Notification_List extends ArrayAdapter<DB_Sports_Notification> {
     private Activity context;
     private List<DB_Sports_Notification> notificationList;
     private CheckedTextView date;
 
-    public DB_Sports_Notification_List(Activity context, List<DB_Sports_Notification> notificationList){
+    public Sports_Notification_List(Activity context, List<DB_Sports_Notification> notificationList){
         super(context,R.layout.question_list,notificationList);
         this.context=context;
         this.notificationList=notificationList;

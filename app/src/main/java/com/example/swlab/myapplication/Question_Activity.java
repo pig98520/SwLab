@@ -112,7 +112,7 @@ public class Question_Activity extends AppCompatActivity implements NavigationVi
                     DB_Question question=questionSnapshot.getValue(DB_Question.class);
                     questionList.add(question);
                 }
-                DB_Question_List adapter=new DB_Question_List(Question_Activity.this,questionList);
+                Question_List adapter=new Question_List(Question_Activity.this,questionList);
                 listview.setAdapter(adapter);
             }
 
