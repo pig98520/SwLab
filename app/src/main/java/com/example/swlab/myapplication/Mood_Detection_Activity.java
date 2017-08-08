@@ -76,8 +76,8 @@ public class Mood_Detection_Activity extends AppCompatActivity{
 
     private void finishDialog() {
         AlertDialog.Builder finishDialog=new AlertDialog.Builder(this);
-        finishDialog.setTitle("最終結果");
-        finishDialog.setMessage("您的快樂指數為"+mScore+"分");
+        finishDialog.setTitle("檢測結果");
+        finishDialog.setMessage("您的憂鬱指數為"+mScore+"分");
         DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -101,8 +101,8 @@ public class Mood_Detection_Activity extends AppCompatActivity{
                 startActivity(intent);
             }
         };
-        finishDialog.setNegativeButton("確定",confirmClick);
-        finishDialog.setPositiveButton("重作",redoClick);
+        finishDialog.setNegativeButton("確認送出",confirmClick);
+        finishDialog.setPositiveButton("重新填選",redoClick);
         finishDialog.show();
     }
 
@@ -110,28 +110,28 @@ public class Mood_Detection_Activity extends AppCompatActivity{
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mScore += 1;
+                mScore += 0;
                 updateQuestion();
             }
         });
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mScore += 2;
+                mScore += 1;
                 updateQuestion();
             }
         });
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mScore += 3;
+                mScore += 2;
                 updateQuestion();
             }
         });
         mButtonChoice4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mScore += 4;
+                mScore += 3;
                 updateQuestion();
             }
         });

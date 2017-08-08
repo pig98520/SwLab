@@ -110,8 +110,8 @@ public class Mood_Choose_Activity extends AppCompatActivity {
 
             }
         };
-        finishDialog.setNeutralButton("確定",confirmClick);
-        finishDialog.setNegativeButton("重選",cancelClick);
+        finishDialog.setNeutralButton("確定送出",confirmClick);
+        finishDialog.setNegativeButton("重新選擇",cancelClick);
         finishDialog.show();
     }
    private void insert(String moods)  {

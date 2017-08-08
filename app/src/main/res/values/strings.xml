@@ -62,9 +62,9 @@
     <string name="Register">註冊</string>
     <string name="Confirm">確認</string>
     <string name="date">日期</string>
-    <string name="content">寫下今天的心情吧</string>
+    <string name="content">將今天發生的事情記錄下來吧！</string>
     <string name="question">question</string>
-    <string name="GoClick">請選擇一個心情</string>
+    <string name="GoClick">請選擇適合今天的心情！</string>
     <string name="Question">常見問題</string>
     <string name="Save">儲存</string>
     <string name="select">選擇影片</string>
