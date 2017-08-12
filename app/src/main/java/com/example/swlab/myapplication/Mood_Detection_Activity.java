@@ -81,7 +81,7 @@ public class Mood_Detection_Activity extends AppCompatActivity{
         DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dtFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+                dtFormat = new SimpleDateFormat("MM/dd");
                 date = new Date();
                 nowTime = dtFormat.format(date);
                 Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user").child("moodDetection").child(auth.getCurrentUser().getUid().trim());

@@ -45,7 +45,7 @@
         <activity android:name=".Mood_Calendar_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Mood_Sum_Activity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape"/>
         <activity android:name=".Mood_Choose_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Mood_Diary_Activity"
