@@ -59,6 +59,7 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
                 Log.e("Photo", "failed: " + databaseError.getMessage());
             }
         });
+
         FirebaseRecyclerAdapter<DB_Lerisure_Theater,LeisureViewHolder> adapter=
                 new FirebaseRecyclerAdapter<DB_Lerisure_Theater, LeisureViewHolder>(DB_Lerisure_Theater.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
                     @Override

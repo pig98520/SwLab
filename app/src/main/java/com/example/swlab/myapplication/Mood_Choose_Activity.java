@@ -1,14 +1,18 @@
 package com.example.swlab.myapplication;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
@@ -26,7 +30,15 @@ public class Mood_Choose_Activity extends AppCompatActivity {
     private ImageButton sad;
     private ImageButton surprise;
     private String moods;
+    private Firebase dbRef;
     private FirebaseAuth auth;
+    private Dialog customDialog;
+    private TextView title;
+    private TextView message;
+    private Button confirm;
+    private Button cancel;
+    private Boolean done=false;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
@@ -40,6 +52,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
         processView();
         processControl();
     }
+
     private void processView() {
         happy=(ImageButton)findViewById(R.id.happy_btn);
         angry=(ImageButton)findViewById(R.id.angry_btn);
@@ -47,79 +60,146 @@ public class Mood_Choose_Activity extends AppCompatActivity {
         laugh=(ImageButton)findViewById(R.id.laugh_btn);
         sad=(ImageButton)findViewById(R.id.sad_btn);
         surprise=(ImageButton)findViewById(R.id.surprise_btn);
+        dtFormat = new SimpleDateFormat("yyyy/MM/dd");
+        date = new Date();
+        nowTime = dtFormat.format(date);
+        dbRef=new Firebase("https://swlabapp.firebaseio.com/");
         auth= FirebaseAuth.getInstance();
+    }
+    private void check_done() {
+        dbRef.child("user").child("moodChoose").child(auth.getCurrentUser().getUid()).orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                        DB_Mood_Choose mood_choose = snapshot.getValue(DB_Mood_Choose.class);
+                        if(mood_choose.getTime().equals(nowTime.toString()))
+                        {
+                            done=true;
+                            customDialog=new Dialog(Mood_Choose_Activity.this,R.style.DialogCustom);
+                            customDialog.setContentView(R.layout.custom_dialog_one);
+                            customDialog.setCancelable(false);
+                            confirm=(Button)customDialog.findViewById(R.id.confirm);
+                            confirm.setText("確認");
+                            title=(TextView)customDialog.findViewById(R.id.title);
+                            title.setText("提醒");
+                            message=(TextView)customDialog.findViewById(R.id.message);
+                            message.setText("今日已經做過紀錄了喔~");
+
+                            confirm.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent();
+                                    intent.setClass(Mood_Choose_Activity.this, Mood_Activity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                            customDialog.show();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     private void processControl() {
         happy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Happy";
-                checkDialog(moods);
+                check_done();
+                if(!done) {
+                    moods = "Happy";
+                    checkDialog(moods);
+                }
             }
         });
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Angry";
-                checkDialog(moods);
+                check_done();
+                if(!done) {
+                    moods = "Angry";
+                    checkDialog(moods);
+                }
             }
         });
        heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Heart";
-                checkDialog(moods);
+                check_done();
+                if(!done) {
+                    moods = "Heart";
+                    checkDialog(moods);
+                }
             }
         });
         laugh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Lanugh";
-                checkDialog(moods);
+                check_done();
+                if(!done) {
+                    moods = "Lanugh";
+                    checkDialog(moods);
+                }
             }
         });
         sad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Sad";
-                checkDialog(moods);
+                check_done();
+                if(!done) {
+                    moods = "Sad";
+                    checkDialog(moods);
+                }
             }
         });
         surprise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moods="Surprise";
-                checkDialog(moods);
+                check_done();
+                if(!done){
+                    moods="Surprise";
+                    checkDialog(moods);
+                }
             }
         });
     }
     private void checkDialog(final String moods) {
-        AlertDialog.Builder finishDialog=new AlertDialog.Builder(this);
-        finishDialog.setTitle("確認");
-        finishDialog.setMessage("您今天的心情是"+moods);
-        DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                insert(moods);
-            }
-        };
-        DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        customDialog=new Dialog(Mood_Choose_Activity.this,R.style.DialogCustom);
+        customDialog.setContentView(R.layout.custom_dialog_two);
+        customDialog.setCancelable(false);
+        confirm=(Button)customDialog.findViewById(R.id.confirm);
+        confirm.setText("儲存心情");
+        cancel=(Button)customDialog.findViewById(R.id.cancel);
+        cancel.setText("重作一次");
+        title=(TextView)customDialog.findViewById(R.id.title);
+        title.setText("確認");
+        message=(TextView)customDialog.findViewById(R.id.message);
+        message.setText("您今天的心情是"+moods);
 
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               insert(moods);
             }
-        };
-        finishDialog.setNeutralButton("確定送出",confirmClick);
-        finishDialog.setNegativeButton("重新選擇",cancelClick);
-        finishDialog.show();
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mood_Choose_Activity.this, Mood_Choose_Activity.class);
+                startActivity(intent);
+            }
+        });
+        customDialog.show();
     }
    private void insert(String moods)  {
-       dtFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-       date = new Date();
-       nowTime = dtFormat.format(date);
-        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user").child("moodChoose").child(auth.getCurrentUser().getUid().trim());
-        DB_Mood_Choose data = new DB_Mood_Choose(moods,nowTime);
-        myFirebaseRef.push().setValue(data);
+       DB_Mood_Choose data = new DB_Mood_Choose(moods,nowTime);
+       dbRef.child("user").child("moodChoose").child(auth.getCurrentUser().getUid().trim()).push().setValue(data);
     }
 }

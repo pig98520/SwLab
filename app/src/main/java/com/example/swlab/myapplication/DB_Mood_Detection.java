@@ -4,14 +4,14 @@ package com.example.swlab.myapplication;
  * Created by pig98520 on 2017/5/23.
  */
 
-public class DB_Mood_Detiction {
+public class DB_Mood_Detection {
     private String score;
     private String time;
 
-    public DB_Mood_Detiction(){
+    public DB_Mood_Detection(){
 
     }
-    public DB_Mood_Detiction(String score, String time) {
+    public DB_Mood_Detection(String score, String time) {
         this.score = score;
         this.time = time;
     }

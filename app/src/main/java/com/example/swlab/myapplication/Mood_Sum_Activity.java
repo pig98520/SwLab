@@ -49,9 +49,9 @@ public class Mood_Sum_Activity extends AppCompatActivity {
                     x_axis.clear();
                     y_axis.clear();
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                        DB_Mood_Detiction db_mood_detiction = postSnapshot.getValue(DB_Mood_Detiction.class);
-                        x_axis.add(db_mood_detiction.getTime());
-                        y_axis.add(Integer.parseInt(db_mood_detiction.getScore()));
+                        DB_Mood_Detection db_mood_detection = postSnapshot.getValue(DB_Mood_Detection.class);
+                        x_axis.add(db_mood_detection.getTime());
+                        y_axis.add(Integer.parseInt(db_mood_detection.getScore()));
                     }
                     setGraph(x_axis, y_axis);
                 }
