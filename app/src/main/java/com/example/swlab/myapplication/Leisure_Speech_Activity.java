@@ -24,15 +24,6 @@ import java.util.List;
 public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     public static final String API_KEY = "AIzaSyBsN5-NKuST0EM-n73aLOGLKhcuoRoA66M";
 
-/*    private String videoArray[] = new String[]
-            {"NLElzEJPceA",
-                    "uiJ4zibW8_M",
-                    "ITxWUu6UcWQ&t=3s",
-                    "zxeR614s1mE",
-                    "_RTsJGwt_5c",
-                    "tmYa6ubl4Ew",
-                    "Ns6xmlkjtbg",
-                    "vFWpKOlpLnQ"};*/
     private FirebaseDatabase dbRef;
     private List<String> title_list = new ArrayList<String>();
     private ArrayAdapter<String> title_adapter;

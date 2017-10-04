@@ -38,7 +38,7 @@ public class Sports_Hula extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Hula.this, Sports_Activity.class);
+        intent.setClass(Sports_Hula.this, Sports_Content.class);
         startActivity(intent);
     }
     @Override

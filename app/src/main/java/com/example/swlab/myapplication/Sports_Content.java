@@ -15,6 +15,14 @@ public class Sports_Content extends AppCompatActivity {
     private Button squatiing;
     private Button rope;
     private Button hula;
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.setClass(Sports_Content.this, Sports_Activity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

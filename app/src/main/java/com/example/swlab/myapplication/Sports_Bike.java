@@ -38,7 +38,7 @@ public class Sports_Bike extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Bike.this, Sports_Activity.class);
+        intent.setClass(Sports_Bike.this, Sports_Content.class);
         startActivity(intent);
     }
     @Override
