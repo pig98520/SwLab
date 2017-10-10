@@ -1,10 +1,9 @@
 package com.example.swlab.myapplication;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Sports_Swim extends AppCompatActivity {
-    private EditText edt_cal;
-    private EditText edt_distance;
-    private EditText edt_time;
+    private TextView txt_cal;
+    private TextView txt_distance;
+    private TextView txt_time;
+
     private SimpleDateFormat dtFormat;
     private String nowTime;
     private Date date;
@@ -33,8 +33,15 @@ public class Sports_Swim extends AppCompatActivity {
     private Boolean isTimer=false;
     private String cal;
     private String distance;
-    private String sportTime;
+    private String time;
     private FirebaseAuth auth;
+
+    private Dialog customDialog;
+    private Button confirm;
+    private TextView title;
+    private TextView message;
+    private EditText input;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
@@ -51,13 +58,12 @@ public class Sports_Swim extends AppCompatActivity {
 
 
     private void processView() {
-        edt_cal = (EditText) findViewById(R.id.txtCal);
-        edt_distance = (EditText) findViewById(R.id.txtCount);
-        edt_time = (EditText) findViewById(R.id.txtTime);
+        txt_cal = (TextView) findViewById(R.id.txt_cal);
+        txt_distance = (TextView) findViewById(R.id.txt_distance);
+        txt_time = (TextView) findViewById(R.id.txt_time);
         timer=(TextView)findViewById(R.id.txt_timer);
         finish = (Button) findViewById(R.id.btn_start);
         auth = FirebaseAuth.getInstance();
-        timer = (TextView)findViewById(R.id.txt_timer);
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
         nowTime = dtFormat.format(date);
@@ -93,6 +99,9 @@ public class Sports_Swim extends AppCompatActivity {
 
 
     private void timerStart() {
+        txt_distance.setText("");
+        txt_cal.setText("");
+        txt_time.setText("");
         finish.setVisibility(View.VISIBLE);
         countdownTimer=new CountDownTimer(1000000000000L, 1000) {
             @Override
@@ -122,8 +131,8 @@ public class Sports_Swim extends AppCompatActivity {
     }
 
     private void timerStop() {
-        edt_time.setText(timer.getText().toString().trim());
-        edt_cal.setText(((min*60+sec)*0.2877)+"");
+        txt_time.setText(timer.getText().toString().trim());
+        txt_cal.setText(((min*60+sec)*0.2877)+"");
         timer.setText("00:00");
         finish.setText("開始運動");
         min=0;
@@ -133,32 +142,37 @@ public class Sports_Swim extends AppCompatActivity {
     }
 
     private void finishDialog() {
-        AlertDialog.Builder finishDialog=new AlertDialog.Builder(this);
-        final EditText input=new EditText(this);
-        finishDialog.setTitle("結束運動");
-        finishDialog.setMessage("流點汗應該舒服多了吧,請輸入今天運動的距離以儲存紀錄");
-        finishDialog.setView(input);
-        DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
+        customDialog=new Dialog(Sports_Swim.this,R.style.DialogCustom);
+        customDialog.setContentView(R.layout.custom_dialog_text);
+        customDialog.setCancelable(false);
+        confirm=(Button)customDialog.findViewById(R.id.confirm);
+        confirm.setText("確認");
+        title=(TextView)customDialog.findViewById(R.id.title);
+        title.setText("結束運動");
+        message=(TextView)customDialog.findViewById(R.id.message);
+        message.setText("請輸入今天運動的距離吧~");
+        input=(EditText)customDialog.findViewById(R.id.editText);
+
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                edt_distance.setText(input.getText().toString());
-                cal=edt_cal.getText().toString().trim();
-                distance=edt_distance.getText().toString().trim();
-                sportTime=edt_time.getText().toString().trim();
-                insertData(nowTime,cal,distance,sportTime);
-                finish.setVisibility(View.INVISIBLE);
-                Toast.makeText(Sports_Swim.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
-            }
-        };
-        DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
+                if(input.getText().toString().trim().equals("")) {
+                    Toast.makeText(Sports_Swim.this, "請輸入數字~", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    distance = input.getText().toString().trim();
+                    cal= txt_cal.getText().toString().trim();
+                    time = txt_time.getText().toString().trim();
+                    insertData(nowTime, cal, distance, time);
+                    finish.setVisibility(View.INVISIBLE);
+                    customDialog.dismiss();
+                    txt_distance.setText(distance);
+                    Toast.makeText(Sports_Swim.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                }
 
             }
-        };
-        finishDialog.setNeutralButton("確定",confirmClick);
-        finishDialog.setNegativeButton("取消",cancelClick);
-        finishDialog.show();
+        });
+        customDialog.show();
     }
 
     private void insertData(String sportDate, String Cal, String Distance, String sportTime){

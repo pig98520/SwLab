@@ -19,9 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Sports_Hula extends AppCompatActivity {
-    private EditText edt_cal;
-    private EditText edt_count;
-    private EditText edt_time;
+    private TextView txt_cal;
+    private TextView txt_count;
+    private TextView txt_time;
     private SimpleDateFormat dtFormat;
     private String nowTime;
     private Date date;
@@ -33,7 +33,7 @@ public class Sports_Hula extends AppCompatActivity {
     private Boolean isTimer=false;
     private String cal;
     private String count;
-    private String sportTime;
+    private String time;
     private FirebaseAuth auth;
     @Override
     public void onBackPressed() {
@@ -51,13 +51,12 @@ public class Sports_Hula extends AppCompatActivity {
 
 
     private void processView() {
-        edt_cal = (EditText) findViewById(R.id.txtCal);
-        edt_count = (EditText) findViewById(R.id.txtCount);
-        edt_time = (EditText) findViewById(R.id.txtTime);
+        txt_cal = (TextView) findViewById(R.id.txt_cal);
+        txt_count = (TextView) findViewById(R.id.txt_count);
+        txt_time = (TextView) findViewById(R.id.txt_time);
         timer=(TextView)findViewById(R.id.txt_timer);
         finish = (Button) findViewById(R.id.btn_start);
         auth = FirebaseAuth.getInstance();
-        timer = (TextView)findViewById(R.id.txt_timer);
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
         nowTime = dtFormat.format(date);
@@ -103,6 +102,9 @@ public class Sports_Hula extends AppCompatActivity {
 
     private void timerStart() {
         finish.setVisibility(View.VISIBLE);
+        txt_cal.setText("");
+        txt_count.setText("");
+        txt_time.setText("");
         countdownTimer=new CountDownTimer(1000000000000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -131,8 +133,8 @@ public class Sports_Hula extends AppCompatActivity {
     }
 
     private void timerStop() {
-        edt_time.setText(timer.getText().toString().trim());
-        edt_cal.setText(((min*60+sec)*0.035)+"");
+        txt_time.setText(timer.getText().toString().trim());
+        txt_cal.setText(((min*60+sec)*0.035)+"");
         timer.setText("00:00");
         min=0;
         sec=0;
@@ -149,11 +151,11 @@ public class Sports_Hula extends AppCompatActivity {
         DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                edt_count.setText(input.getText().toString());
-                cal=edt_cal.getText().toString().trim();
-                count = edt_count.getText().toString().trim();
-                sportTime=edt_time.getText().toString().trim();
-                insertData(nowTime,cal, count,sportTime);
+                txt_count.setText(input.getText().toString());
+                cal= txt_cal.getText().toString().trim();
+                count = txt_count.getText().toString().trim();
+                time = txt_time.getText().toString().trim();
+                insertData(nowTime,cal, count, time);
                 finish.setVisibility(View.INVISIBLE);
                 Toast.makeText(Sports_Hula.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
             }

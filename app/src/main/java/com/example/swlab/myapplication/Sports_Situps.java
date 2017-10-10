@@ -23,9 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Sports_Situps extends AppCompatActivity implements SensorEventListener{
-    private EditText edt_cal;
-    private EditText edt_count;
-    private EditText edt_time;
+    private TextView txt_cal;
+    private TextView txt_count;
+    private TextView txt_time;
     private SimpleDateFormat dtFormat;
     private String nowTime;
     private Date date;
@@ -37,14 +37,13 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
     private Boolean isTimer=false;
     private String cal;
     private String count;
-    private String sportTime;
+    private String time;
     private FirebaseAuth auth;
     private Dialog customDialog;
     private Button confirm;
     private TextView title;
     private TextView message;
     private EditText input;
-
 
     private SensorManager sensorManager;
     private Boolean running=false;
@@ -67,13 +66,12 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
 
 
     private void processView() {
-        edt_cal = (EditText) findViewById(R.id.txtCal);
-        edt_count = (EditText) findViewById(R.id.txtCount);
-        edt_time = (EditText) findViewById(R.id.txtTime);
+        txt_cal = (TextView) findViewById(R.id.txt_cal);
+        txt_count = (TextView) findViewById(R.id.txt_count);
+        txt_time = (TextView) findViewById(R.id.txt_time);
         timer=(TextView)findViewById(R.id.txt_timer);
         finish = (Button) findViewById(R.id.btn_start);
         auth = FirebaseAuth.getInstance();
-        timer = (TextView)findViewById(R.id.txt_timer);
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
         nowTime = dtFormat.format(date);
@@ -111,6 +109,9 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
 
     private void timerStart() {
         finish.setVisibility(View.VISIBLE);
+        txt_cal.setText("");
+        txt_count.setText("");
+        txt_time.setText("");
         countdownTimer=new CountDownTimer(1000000000000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -139,8 +140,8 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
     }
 
     private void timerStop() {
-        edt_time.setText(timer.getText().toString().trim());
-        edt_cal.setText(((min*60+sec)*0.12)+"");
+        txt_time.setText(timer.getText().toString().trim());
+        txt_cal.setText(((min*60+sec)*0.12)+"");
         timer.setText("00:00");
         min=0;
         sec=0;
@@ -169,12 +170,9 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
                     }
                     else{
                         count = input.getText().toString().trim();
-                        edt_count.setText("");
-                        cal=edt_cal.getText().toString().trim();
-                        edt_cal.setText("");
-                        sportTime=edt_time.getText().toString().trim();
-                        edt_time.setText("");
-                        insertData(nowTime, cal, count, sportTime);
+                        cal= txt_cal.getText().toString().trim();
+                        time = txt_time.getText().toString().trim();
+                        insertData(nowTime, cal, count, time);
                         finish.setVisibility(View.INVISIBLE);
                         customDialog.dismiss();
                         Toast.makeText(Sports_Situps.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
@@ -197,13 +195,11 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    count=edt_count.getText().toString().trim();
-                    edt_count.setText("");
-                    cal=edt_cal.getText().toString().trim();
-                    edt_cal.setText("");
-                    sportTime=edt_time.getText().toString().trim();
-                    edt_time.setText("");
-                    insertData(nowTime,cal, count,sportTime);
+                    count= txt_count.getText().toString().trim();
+                    txt_count.setText(count);
+                    cal= txt_cal.getText().toString().trim();
+                    time = txt_time.getText().toString().trim();
+                    insertData(nowTime,cal, count, time);
                     finish.setVisibility(View.INVISIBLE);
                     customDialog.dismiss();
                     Toast.makeText(Sports_Situps.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
@@ -245,7 +241,7 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
         if(running)
         {
             sensorCount=String.valueOf(event.values[0]);
-            edt_count.setText(sensorCount);
+            txt_count.setText(sensorCount);
         }
     }
 
