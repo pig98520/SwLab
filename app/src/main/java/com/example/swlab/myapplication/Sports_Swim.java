@@ -73,6 +73,7 @@ public class Sports_Swim extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish.setVisibility(View.INVISIBLE);
                 isTimer=false;
                 timerStop();
             }
@@ -99,10 +100,10 @@ public class Sports_Swim extends AppCompatActivity {
 
 
     private void timerStart() {
+        finish.setVisibility(View.VISIBLE);
         txt_distance.setText("");
         txt_cal.setText("");
         txt_time.setText("");
-        finish.setVisibility(View.VISIBLE);
         countdownTimer=new CountDownTimer(1000000000000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

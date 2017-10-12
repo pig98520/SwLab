@@ -83,6 +83,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish.setVisibility(View.INVISIBLE);
                 isTimer=false;
                 timerStop();
             }

@@ -66,17 +66,9 @@ public class Sports_Hula extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isTimer){
-                    isTimer=true;
-                    timerStart();
-                }
-                else
-                {
-                    isTimer=false;
-                    timerStop();
-                }
-
-
+                finish.setVisibility(View.INVISIBLE);
+                isTimer = false;
+                timerStop();
             }
         });
 
