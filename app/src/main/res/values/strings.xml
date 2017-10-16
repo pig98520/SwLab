@@ -63,7 +63,6 @@
     <string name="Confirm">確認</string>
     <string name="date">日期</string>
     <string name="content">將今天發生的事情記錄下來吧！</string>
-    <string name="question">question</string>
     <string name="GoClick">請選擇適合今天的心情！</string>
     <string name="Question">常見問題</string>
     <string name="Save">儲存</string>
@@ -73,4 +72,10 @@
     <string name="Mood">心情紀錄</string>
     <string name="choose">心情指數</string>
     <string name="sport">運動紓壓</string>
+    <string name="happy">開心</string>
+    <string name="laugh">大好</string>
+    <string name="angry">生氣</string>
+    <string name="sad">難過</string>
+    <string name="lovely">幸福</string>
+    <string name="surprise">驚訝</string>
 </resources>

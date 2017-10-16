@@ -53,7 +53,7 @@ public class Sports_Upanddown extends AppCompatActivity implements SensorEventLi
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Upanddown.this, Sports_Content.class);
+        intent.setClass(Sports_Upanddown.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override

@@ -54,7 +54,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Squatting.this, Sports_Content.class);
+        intent.setClass(Sports_Squatting.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override

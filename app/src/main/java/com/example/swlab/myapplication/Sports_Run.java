@@ -64,7 +64,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Run.this, Sports_Content.class);
+        intent.setClass(Sports_Run.this, Sports_Record.class);
         startActivity(intent);
     }
 
@@ -113,7 +113,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+            return_back;
         }
         location = lm.getLastKnownLocation(bestProvider);
         getLocation(location);*/

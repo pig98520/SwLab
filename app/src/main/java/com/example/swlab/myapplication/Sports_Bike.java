@@ -64,7 +64,7 @@ public class Sports_Bike extends AppCompatActivity implements LocationListener{
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Bike.this, Sports_Content.class);
+        intent.setClass(Sports_Bike.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override
@@ -111,7 +111,7 @@ public class Sports_Bike extends AppCompatActivity implements LocationListener{
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+            return_back;
         }
         location = lm.getLastKnownLocation(bestProvider);
         getLocation(location);*/

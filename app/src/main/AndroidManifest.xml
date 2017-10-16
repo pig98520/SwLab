@@ -20,6 +20,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
+        android:background="@color/background"
         android:theme="@style/AppTheme"
         android:name=".FireApp"
         >
@@ -46,8 +47,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Mood_Detection_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Mood_Calendar_Activity"
-            android:screenOrientation="portrait" />
         <activity android:name=".Mood_Sum_Activity"
             android:screenOrientation="landscape"/>
         <activity android:name=".Mood_Choose_Activity"
@@ -61,8 +60,6 @@
         <activity android:name=".Leisure_Speech_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Leisure_Article_Activity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Sports_Event_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Music_Activity"
             android:screenOrientation="portrait" />
@@ -78,11 +75,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Sports_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Sports_Event_Activity"
-            android:screenOrientation="portrait" />
         <activity android:name=".Sports_Notification_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Sports_Content"
+        <activity android:name=".Sports_Record"
             android:screenOrientation="portrait" />
         <activity android:name=".Sports_Run"
             android:screenOrientation="portrait" />

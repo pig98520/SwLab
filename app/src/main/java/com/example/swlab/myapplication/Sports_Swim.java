@@ -45,7 +45,7 @@ public class Sports_Swim extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Swim.this, Sports_Content.class);
+        intent.setClass(Sports_Swim.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override

@@ -53,7 +53,7 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Situps.this, Sports_Content.class);
+        intent.setClass(Sports_Situps.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override

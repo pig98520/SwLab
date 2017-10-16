@@ -3,7 +3,6 @@ package com.example.swlab.myapplication;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,27 +30,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onBackPressed() {
-        if(!isdoubleClick)
-        {
-            Toast.makeText(Music_Activity.this,"雙擊以退出",Toast.LENGTH_LONG).show();
-            isdoubleClick=true;
-        }
-        else
-        {
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-        }
-        new CountDownTimer(5000,1000){
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-            @Override
-            public void onFinish() {
-                isdoubleClick=false;
-            }
-        }.start();
+        startActivity(new Intent(Music_Activity.this,Index_Activity.class));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

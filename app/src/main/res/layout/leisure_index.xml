@@ -13,108 +13,196 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         tools:context="com.example.swlab.myapplication.Main_Activity"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="81dp">
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/txt_leisure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Leisure"
+            android:textColor="@color/authui_inputTextColorDark"
+            android:textSize="36sp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.029" />
+
+        <Button
+            android:id="@+id/theater_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/leisure_theater"
+            app:layout_constraintHorizontal_bias="0.805"
+            app:layout_constraintVertical_bias="0.53999996" />
+
+        <Button
+            android:id="@+id/exhibition_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/leisure_exhibition"
+            app:layout_constraintHorizontal_bias="0.194"
+            app:layout_constraintVertical_bias="0.559" />
+
+        <Button
+            android:id="@+id/speech_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/leisure_speech"
+            app:layout_constraintHorizontal_bias="0.805"
+            app:layout_constraintVertical_bias="0.22" />
+
+        <Button
+            android:id="@+id/article_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/leisure_article"
+            app:layout_constraintHorizontal_bias="0.194"
+            app:layout_constraintVertical_bias="0.22" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/return_back"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.025"
+            app:layout_constraintVertical_bias="0.015" />
+
+        <Button
+            android:id="@+id/menu_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/menu"
+            app:layout_constraintHorizontal_bias="0.974"
+            app:layout_constraintVertical_bias="0.015" />
+
+        <TextView
+            android:id="@+id/txt_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/Leisure"
-            android:textColor="@color/authui_inputTextColorDark"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.029999971" />
-
-        <Button
-            android:id="@+id/theater_btn"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="99dp"
-            android:background="@android:color/holo_orange_light"
-            android:text="@string/theater"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/exhibition_btn"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="99dp"
-            android:background="@android:color/holo_blue_light"
-            android:text="@string/exhibition"
-            app:layout_constraintHorizontal_bias="0.375"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/theater_btn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/speech_btn"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="40dp"
-            android:background="@android:color/holo_green_light"
-            android:text="@string/speech"
-            app:layout_constraintHorizontal_bias="0.392"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/theater_btn"
-            app:layout_constraintTop_toBottomOf="@+id/exhibition_btn" />
-
-        <Button
-            android:id="@+id/article_btn"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="40dp"
-            android:background="?android:attr/textColorLinkInverse"
             android:text="@string/article"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.224"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/theater_btn" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.349" />
 
-        <Button
-            android:id="@+id/back_btn"
-            android:layout_width="51dp"
-            android:layout_height="51dp"
+        <TextView
+            android:id="@+id/txt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:background="@mipmap/ic_keyboard_return_black_24dp"
+            android:text="@string/speech"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.025"
+            app:layout_constraintHorizontal_bias="0.775"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.016" />
+            app:layout_constraintVertical_bias="0.349" />
 
-        <Button
-            android:id="@+id/menu_btn"
-            android:layout_width="51dp"
-            android:layout_height="51dp"
+        <TextView
+            android:id="@+id/txt_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:background="@mipmap/ic_view_headline_black_24dp"
+            android:text="@string/exhibition"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.016" />
+            app:layout_constraintVertical_bias="0.655" />
+
+        <TextView
+            android:id="@+id/txt_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/theater"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.775"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.655" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.design.widget.NavigationView

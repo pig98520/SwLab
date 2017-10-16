@@ -54,7 +54,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.setClass(Sports_Rope.this, Sports_Content.class);
+        intent.setClass(Sports_Rope.this, Sports_Record.class);
         startActivity(intent);
     }
     @Override
