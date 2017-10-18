@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/question"
         android:layout_width="332dp"
         android:layout_height="52dp"
@@ -19,6 +19,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -26,16 +27,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/choice1"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:text="A"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,16 +47,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.211" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/choice2"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:text="B"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -60,16 +67,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.405" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/choice3"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:text="C"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -77,16 +87,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.607" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/choice4"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:text="D"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"

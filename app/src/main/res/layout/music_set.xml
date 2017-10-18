@@ -7,51 +7,55 @@
     android:layout_height="match_parent"
     tools:context="com.example.swlab.myapplication.Music_Set">
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/playmode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mode"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/minute"
         android:textSize="18sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.297" />
 
-    <EditText
+    <de.morrox.fontinator.FontEditText
         android:id="@+id/min_edit"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="0"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintHorizontal_bias="0.805"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintVertical_bias="0.278" />
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/set"
         android:textSize="36sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -70,12 +74,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.092" />
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/playtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/playTime"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -83,32 +88,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.296" />
 
-    <EditText
+    <de.morrox.fontinator.FontEditText
         android:id="@+id/hr_edit"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
         android:text="0"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27999997" />
+        app:layout_constraintVertical_bias="0.278" />
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/hr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hour"
         android:textSize="18sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.297" />
 
     <RadioGroup
         android:id="@+id/radGroup"
@@ -141,7 +148,6 @@
             android:layout_height="wrap_content"
             android:text="@string/random"
             android:textSize="18sp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.81"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -150,7 +156,7 @@
             app:layout_constraintVertical_bias="0.498" />
     </RadioGroup>
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,6 +166,9 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_rounded"
         android:text="@string/Save"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

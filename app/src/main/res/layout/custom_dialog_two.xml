@@ -18,7 +18,7 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,11 +28,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/tw__transparent"
         android:gravity="center"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -40,7 +42,7 @@
         app:layout_constraintVertical_bias="0.07999998"
         app:layout_constraintHorizontal_bias="0.505" />
 
-    <TextView
+    <de.morrox.fontinator.FontTextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,17 +52,19 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/tw__transparent"
         android:gravity="center"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.504" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -73,8 +77,9 @@
         android:background="@drawable/button_rounded"
         android:gravity="center"
         android:text="Button"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -82,7 +87,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.92" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -95,8 +100,9 @@
         android:background="@drawable/button_rounded"
         android:gravity="center"
         android:text="Button"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintLeft_toLeftOf="parent"

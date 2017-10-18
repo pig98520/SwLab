@@ -82,7 +82,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
         txt_distance = (TextView) findViewById(R.id.txt_distance);
         txt_time = (TextView) findViewById(R.id.txt_time);
         timer = (TextView) findViewById(R.id.txt_timer);
-        finish = (Button) findViewById(R.id.btn_start);
+        finish = (Button) findViewById(R.id.btn_stop);
         auth = FirebaseAuth.getInstance();
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
@@ -207,7 +207,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
                     timer.setText("0"+min+":0"+sec);
                 else
                     timer.setText(min+":"+sec);
-                finish.setText("結束運動");
+                finish.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -235,6 +235,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
         customDialog=new Dialog(Sports_Run.this,R.style.DialogCustom);
         customDialog.setContentView(R.layout.custom_dialog_text);
         customDialog.setCancelable(false);
+        customDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_rounded);
         confirm=(Button)customDialog.findViewById(R.id.confirm);
         confirm.setText("確認");
         title=(TextView)customDialog.findViewById(R.id.title);

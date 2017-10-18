@@ -71,10 +71,8 @@ public class Mood_Sum_Activity extends AppCompatActivity {
 
     private void setGraph(ArrayList<String> x_axis, ArrayList<Integer> y_axis) {
         if(x_axis.size()<2){
-            x_array=new String[x_axis.size()];
-            y_array=new Integer[y_axis.size()];
-            x_array=x_axis.toArray(x_array);
-            y_array=y_axis.toArray(y_array);
+            x_array=new String[] {"0","0"};
+            y_array=new Integer[]{ 0, 0};
             dataPoints = new DataPoint[y_array.length];
             for (int i = 0; i < dataPoints.length; i++)
                 dataPoints[i] = new DataPoint(0,0);

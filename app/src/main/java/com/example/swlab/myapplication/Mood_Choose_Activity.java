@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -23,12 +22,12 @@ public class Mood_Choose_Activity extends AppCompatActivity {
     private SimpleDateFormat dtFormat;
     private String nowTime;
     private Date date;
-    private ImageButton angry;
-    private ImageButton happy;
-    private ImageButton heart;
-    private ImageButton laugh;
-    private ImageButton sad;
-    private ImageButton surprise;
+    private Button angry;
+    private Button happy;
+    private Button heart;
+    private Button laugh;
+    private Button sad;
+    private Button surprise;
     private String moods;
     private Firebase dbRef;
     private FirebaseAuth auth;
@@ -54,12 +53,12 @@ public class Mood_Choose_Activity extends AppCompatActivity {
     }
 
     private void processView() {
-        happy=(ImageButton)findViewById(R.id.happy_btn);
-        angry=(ImageButton)findViewById(R.id.angry_btn);
-        heart=(ImageButton)findViewById(R.id.heart_btn);
-        laugh=(ImageButton)findViewById(R.id.laugh_btn);
-        sad=(ImageButton)findViewById(R.id.sad_btn);
-        surprise=(ImageButton)findViewById(R.id.surprise_btn);
+        happy=(Button)findViewById(R.id.happy_btn);
+        angry=(Button)findViewById(R.id.angry_btn);
+        heart=(Button)findViewById(R.id.heart_btn);
+        laugh=(Button)findViewById(R.id.laugh_btn);
+        sad=(Button)findViewById(R.id.sad_btn);
+        surprise=(Button)findViewById(R.id.surprise_btn);
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
         nowTime = dtFormat.format(date);

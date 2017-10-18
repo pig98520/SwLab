@@ -71,7 +71,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
         txt_count = (TextView) findViewById(R.id.txt_count);
         txt_time = (TextView) findViewById(R.id.txt_time);
         timer=(TextView)findViewById(R.id.txt_timer);
-        finish = (Button) findViewById(R.id.btn_start);
+        finish = (Button) findViewById(R.id.btn_stop);
         auth = FirebaseAuth.getInstance();
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
@@ -130,7 +130,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
                     timer.setText("0"+min+":0"+sec);
                 else
                     timer.setText(min+":"+sec);
-                finish.setText("結束運動");
+                finish.setVisibility(View.VISIBLE);
             }
 
             @Override

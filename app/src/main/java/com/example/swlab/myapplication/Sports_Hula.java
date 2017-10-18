@@ -1,10 +1,9 @@
 package com.example.swlab.myapplication;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +34,13 @@ public class Sports_Hula extends AppCompatActivity {
     private String count;
     private String time;
     private FirebaseAuth auth;
+
+    private Dialog customDialog;
+    private Button confirm;
+    private TextView title;
+    private TextView message;
+    private EditText input;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
@@ -55,7 +61,7 @@ public class Sports_Hula extends AppCompatActivity {
         txt_count = (TextView) findViewById(R.id.txt_count);
         txt_time = (TextView) findViewById(R.id.txt_time);
         timer=(TextView)findViewById(R.id.txt_timer);
-        finish = (Button) findViewById(R.id.btn_start);
+        finish = (Button) findViewById(R.id.btn_stop);
         auth = FirebaseAuth.getInstance();
         dtFormat = new SimpleDateFormat("yyyy/MM/dd");
         date = new Date();
@@ -113,7 +119,7 @@ public class Sports_Hula extends AppCompatActivity {
                     timer.setText("0"+min+":0"+sec);
                 else
                     timer.setText(min+":"+sec);
-                finish.setText("結束運動");
+                finish.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -135,32 +141,38 @@ public class Sports_Hula extends AppCompatActivity {
     }
 
     private void finishDialog() {
-        AlertDialog.Builder finishDialog=new AlertDialog.Builder(this);
-        final EditText input=new EditText(this);
-        finishDialog.setTitle("結束運動");
-        finishDialog.setMessage("流點汗應該舒服多了吧,算一下你今天搖了幾下吧?");
-        finishDialog.setView(input);
-        DialogInterface.OnClickListener confirmClick =new DialogInterface.OnClickListener(){
+        customDialog=new Dialog(Sports_Hula.this,R.style.DialogCustom);
+        customDialog.setContentView(R.layout.custom_dialog_text);
+        customDialog.setCancelable(false);
+        customDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_rounded);
+        confirm=(Button)customDialog.findViewById(R.id.confirm);
+        confirm.setText("確認");
+        title=(TextView)customDialog.findViewById(R.id.title);
+        title.setText("結束運動");
+        message=(TextView)customDialog.findViewById(R.id.message);
+        message.setText("請輸入今天搖了幾下吧~");
+        input=(EditText)customDialog.findViewById(R.id.editText);
+
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                txt_count.setText(input.getText().toString());
-                cal= txt_cal.getText().toString().trim();
-                count = txt_count.getText().toString().trim();
-                time = txt_time.getText().toString().trim();
-                insertData(nowTime,cal, count, time);
-                finish.setVisibility(View.INVISIBLE);
-                Toast.makeText(Sports_Hula.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
-            }
-        };
-        DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
+                if(input.getText().toString().trim().equals("")) {
+                    Toast.makeText(Sports_Hula.this, "請輸入數字~", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    count = input.getText().toString().trim();
+                    txt_count.setText(count);
+                    cal= txt_cal.getText().toString().trim();
+                    time = txt_time.getText().toString().trim();
+                    insertData(nowTime, cal, count, time);
+                    finish.setVisibility(View.INVISIBLE);
+                    customDialog.dismiss();
+                    Toast.makeText(Sports_Hula.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                }
 
             }
-        };
-        finishDialog.setNeutralButton("確定",confirmClick);
-        finishDialog.setNegativeButton("取消",cancelClick);
-        finishDialog.show();
+        });
+        customDialog.show();
     }
 
     private void insertData(String sportDate, String Cal, String Distance, String sportTime){
