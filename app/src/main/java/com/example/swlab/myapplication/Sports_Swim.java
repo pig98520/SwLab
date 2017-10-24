@@ -47,6 +47,7 @@ public class Sports_Swim extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Sports_Swim.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

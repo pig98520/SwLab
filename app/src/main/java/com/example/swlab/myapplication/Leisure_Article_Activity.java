@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +25,7 @@ public class Leisure_Article_Activity  extends AppCompatActivity{
         Intent intent = new Intent();
         intent.setClass(Leisure_Article_Activity.this, Leisure_Activity.class);
         startActivity(intent);
+        finish();
     }
     private RecyclerView recyclerView;
     @Override

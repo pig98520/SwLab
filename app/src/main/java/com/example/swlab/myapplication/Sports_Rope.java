@@ -56,6 +56,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
         Intent intent = new Intent();
         intent.setClass(Sports_Rope.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

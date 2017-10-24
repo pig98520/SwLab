@@ -46,6 +46,7 @@ public class Sports_Hula extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Sports_Hula.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

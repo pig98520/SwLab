@@ -31,6 +31,7 @@ public class Mood_Sum_Activity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Mood_Sum_Activity.this, Mood_Activity.class);
         startActivity(intent);
+        finish();
     }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -55,6 +55,7 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
         Intent intent = new Intent();
         intent.setClass(Sports_Situps.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

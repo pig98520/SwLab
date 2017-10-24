@@ -66,6 +66,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
         Intent intent = new Intent();
         intent.setClass(Sports_Run.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

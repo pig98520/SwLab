@@ -27,6 +27,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
     @Override
     public void onBackPressed() {
         startActivity(new Intent(Leisure_Activity.this,Index_Activity.class));
+        finish();
     }
 
     @Override
@@ -53,6 +54,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 Intent intent = new Intent();
                 intent.setClass(Leisure_Activity.this ,Leisure_Exhibition_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         nextPageBtn = (Button)findViewById(R.id.theater_btn);
@@ -63,6 +65,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 Intent intent = new Intent();
                 intent.setClass(Leisure_Activity.this ,Leisure_Theater_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -75,6 +78,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 Intent intent = new Intent();
                 intent.setClass(Leisure_Activity.this ,Leisure_Speech_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -86,6 +90,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 Intent intent = new Intent();
                 intent.setClass(Leisure_Activity.this ,Leisure_Article_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -94,12 +99,13 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                 Intent intent = new Intent();
                 intent.setClass(Leisure_Activity.this  , Index_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
+                drawer.openDrawer(GravityCompat.END);
             }
         });
     }
@@ -111,26 +117,31 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
             Intent intent=new Intent();
             intent.setClass(Leisure_Activity.this,Leisure_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Sport){
             Intent intent=new Intent();
             intent.setClass(Leisure_Activity.this,Sports_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Music){
             Intent intent=new Intent();
             intent.setClass(Leisure_Activity.this,Music_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Mood){
             Intent intent=new Intent();
             intent.setClass(Leisure_Activity.this,Mood_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Question){
             Intent intent=new Intent();
             intent.setClass(Leisure_Activity.this,Question_Activity.class);
             startActivity(intent);
+            finish();
         }
         else if(id==R.id.Logout)
         {
@@ -144,6 +155,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
                     Intent intent=new Intent();
                     intent.setClass(Leisure_Activity.this,Main_Activity.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
@@ -156,7 +168,7 @@ public class Leisure_Activity extends Activity implements NavigationView.OnNavig
             logoutDialog.setNegativeButton("取消",cancelClick);
             logoutDialog.show();
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 }

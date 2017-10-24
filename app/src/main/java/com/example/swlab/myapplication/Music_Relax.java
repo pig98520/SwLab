@@ -47,10 +47,9 @@ public class Music_Relax extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.setClass(Music_Relax.this, Music_Activity.class);
-        startActivity(intent);
+        startActivity(new Intent(Music_Relax.this,Music_Activity.class));
         music.stop();
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +109,7 @@ public class Music_Relax extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 musicUrl=dataSnapshot.getValue(String.class); //取得節點內的資料
                 try {
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    playBtn.setBackgroundResource(R.drawable.pause);
                     music.setDataSource(musicUrl); //設定media的路徑
                     music.prepare();
                     progressDialog.dismiss();
@@ -183,20 +182,18 @@ public class Music_Relax extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Music_Relax.this, Music_Activity.class);
-                startActivity(intent);
+                startActivity(new Intent(Music_Relax.this,Music_Activity.class));
                 music.stop();
+                finish();
             }
         });
         setBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
                 Music_Activity.returnFlag='r';
-                intent.setClass(Music_Relax.this, Music_Set.class);
-                startActivity(intent);
+                startActivity(new Intent(Music_Relax.this,Music_Set.class));
                 music.stop();
+                finish();
             }
         });
         playBtn.setOnClickListener(new View.OnClickListener() {
@@ -205,12 +202,12 @@ public class Music_Relax extends AppCompatActivity {
                 if(music.isPlaying()) {
                     music.pause();
                     handler.removeCallbacks(updateThread);
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_play);
+                    playBtn.setBackgroundResource(R.drawable.play);
                 }
                 else {
                     music.start();
                     handler.post(updateThread);
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    playBtn.setBackgroundResource(R.drawable.pause);
                 }
             }
         });

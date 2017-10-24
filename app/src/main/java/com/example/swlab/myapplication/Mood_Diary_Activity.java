@@ -23,6 +23,7 @@ public class Mood_Diary_Activity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Mood_Diary_Activity.this, Mood_Activity.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

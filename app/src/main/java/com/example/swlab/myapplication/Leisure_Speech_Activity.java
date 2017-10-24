@@ -41,6 +41,7 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
         Intent intent = new Intent();
         intent.setClass(Leisure_Speech_Activity.this, Leisure_Activity.class);
         startActivity(intent);
+        finish();
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +105,7 @@ public class Leisure_Speech_Activity extends YouTubeBaseActivity implements YouT
                 intent.putExtras(bundle);
                 //開啟Activity
                 startActivity(intent);
+                finish();
             }
         });
     }

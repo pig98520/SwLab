@@ -23,6 +23,7 @@ public class Sports_Record extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Sports_Record.this, Sports_Activity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -49,6 +50,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent=new Intent();
                 intent.setClass(Sports_Record.this,Sports_Run.class);
                 startActivity(intent);
+                finish();
             }
         });
         bike.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Bike.class);
                 startActivity(intent);
+                finish();
             }
         });
         swim.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +66,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Swim.class);
                 startActivity(intent);
+                finish();
             }
         });
         upanddown.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +74,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Upanddown.class);
                 startActivity(intent);
+                finish();
             }
         });
         situps.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +82,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Situps.class);
                 startActivity(intent);
+                finish();
             }
         });
         squatiing.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +90,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Squatting.class);
                 startActivity(intent);
+                finish();
             }
         });
         rope.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +98,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Rope.class);
                 startActivity(intent);
+                finish();
             }
         });
         hula.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +106,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this, Sports_Hula.class);
                 startActivity(intent);
+                finish();
             }
         });
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +115,7 @@ public class Sports_Record extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Sports_Record.this  , Index_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

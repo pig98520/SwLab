@@ -47,26 +47,25 @@ public class Music_Set extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
                 switch (Music_Activity.returnFlag)  {
                     case 'r' : {
-                        intent.setClass(Music_Set.this, Music_Relax.class);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Relax.class));
+                        finish();
                         break;
                     }
                     case 'c' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Concentrate.class));
+                        finish();
                         break;
                     }
                     case 'e' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Exercise.class));
+                        finish();
                         break;
                     }
                     case 's' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Sleep.class));
+                        finish();
                         break;
                     }
                 }
@@ -76,7 +75,6 @@ public class Music_Set extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 time=Integer.parseInt(hour.getText().toString().trim())*60
                     +Integer.parseInt(min.getText().toString().trim());
                 if(random.isChecked())
@@ -88,36 +86,35 @@ public class Music_Set extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 switch (Music_Activity.returnFlag)  {
                     case 'r' : {
-                        intent.setClass(Music_Set.this, Music_Relax.class);
-                        startActivity(intent);
                         bundle.putString("mode", mode);
                         bundle.putInt("time",time);
                         intent.putExtras(bundle);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Relax.class));
+                        finish();
                         break;
                     }
                     case 'c' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
                         bundle.putString("mode", mode);
                         bundle.putInt("time",time);
                         intent.putExtras(bundle);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Concentrate.class));
+                        finish();
                         break;
                     }
                     case 'e' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
                         bundle.putString("mode", mode);
                         bundle.putInt("time",time);
                         intent.putExtras(bundle);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Exercise.class));
+                        finish();
                         break;
                     }
                     case 's' : {
-                        intent.setClass(Music_Set.this, Music_Concentrate.class);
                         bundle.putString("mode", mode);
                         bundle.putInt("time",time);
                         intent.putExtras(bundle);
-                        startActivity(intent);
+                        startActivity(new Intent(Music_Set.this,Music_Sleep.class));
+                        finish();
                         break;
                     }
                 }

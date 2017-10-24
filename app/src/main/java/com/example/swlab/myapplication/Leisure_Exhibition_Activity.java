@@ -26,6 +26,7 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Leisure_Exhibition_Activity.this, Leisure_Activity.class);
         startActivity(intent);
+        finish();
     }
     private RecyclerView recyclerView;
     @Override

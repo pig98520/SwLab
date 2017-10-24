@@ -49,16 +49,22 @@ public class Sports_Notification_Activity extends AppCompatActivity {
     private AlarmManager manager;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Sports_Notification_Activity.this,Sports_Activity.class));
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sports_notification);
         processView();
+        setNotifi();
         processControl();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    private void setNotifi() {
         databaseRef.addValueEventListener(new com.firebase.client.ValueEventListener() {
             @Override
             public void onDataChange(com.firebase.client.DataSnapshot dataSnapshot) {

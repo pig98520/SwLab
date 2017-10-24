@@ -55,6 +55,7 @@ public class Sports_Upanddown extends AppCompatActivity implements SensorEventLi
         Intent intent = new Intent();
         intent.setClass(Sports_Upanddown.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

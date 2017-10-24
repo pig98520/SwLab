@@ -56,6 +56,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
         Intent intent = new Intent();
         intent.setClass(Sports_Squatting.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

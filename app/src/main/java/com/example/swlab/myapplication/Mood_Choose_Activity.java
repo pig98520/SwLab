@@ -43,6 +43,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Mood_Choose_Activity.this, Mood_Activity.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
                                     Intent intent = new Intent();
                                     intent.setClass(Mood_Choose_Activity.this, Mood_Activity.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             });
                             customDialog.show();
@@ -193,6 +195,7 @@ public class Mood_Choose_Activity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(Mood_Choose_Activity.this, Mood_Choose_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         customDialog.show();

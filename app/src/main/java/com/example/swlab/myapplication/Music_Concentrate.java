@@ -47,10 +47,9 @@ public class Music_Concentrate extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.setClass(Music_Concentrate.this, Music_Activity.class);
-        startActivity(intent);
+        startActivity(new Intent(Music_Concentrate.this,Music_Activity.class));
         music.stop();
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +109,7 @@ public class Music_Concentrate extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 musicUrl=dataSnapshot.getValue(String.class); //取得節點內的資料
                 try {
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    playBtn.setBackgroundResource(R.drawable.pause);
                     music.setDataSource(musicUrl); //設定media的路徑
                     music.prepare();
                     progressDialog.dismiss();
@@ -181,19 +180,16 @@ public class Music_Concentrate extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Music_Concentrate.this, Music_Activity.class);
-                startActivity(intent);
+                startActivity(new Intent(Music_Concentrate.this,Music_Activity.class));
                 music.stop();
+                finish();
             }
         });
         setBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
                 Music_Activity.returnFlag='c';
-                intent.setClass(Music_Concentrate.this, Music_Set.class);
-                startActivity(intent);
+                startActivity(new Intent(Music_Concentrate.this,Music_Set.class));
                 music.stop();
             }
         });
@@ -202,11 +198,11 @@ public class Music_Concentrate extends AppCompatActivity {
             public void onClick(View v) {
                 if(music.isPlaying()) {
                     music.pause();
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_play);
+                    playBtn.setBackgroundResource(R.drawable.play);
                 }
                 else {
                     music.start();
-                    playBtn.setBackgroundResource(android.R.drawable.ic_media_pause);
+                    playBtn.setBackgroundResource(R.drawable.pause);
                 }
             }
         });

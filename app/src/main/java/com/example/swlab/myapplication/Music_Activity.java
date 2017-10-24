@@ -31,6 +31,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
     @Override
     public void onBackPressed() {
         startActivity(new Intent(Music_Activity.this,Index_Activity.class));
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 returnFlag='r';
                 intent.setClass(Music_Activity.this  , Music_Relax.class);
                 startActivity(intent);
+                finish();
             }
         });
         concentrate.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 returnFlag='c';
                 intent.setClass(Music_Activity.this  , Music_Concentrate.class);
                 startActivity(intent);
+                finish();
             }
         });
         sleep.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +82,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 returnFlag='s';
                 intent.setClass(Music_Activity.this  , Music_Sleep.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -89,6 +93,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 returnFlag='e';
                 intent.setClass(Music_Activity.this  , Music_Exercise.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -98,6 +103,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                 Intent intent = new Intent();
                 intent.setClass(Music_Activity.this  , Index_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         menu_btn.setOnClickListener(new View.OnClickListener() {
@@ -116,26 +122,31 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
             Intent intent=new Intent();
             intent.setClass(Music_Activity.this,Leisure_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Sport){
             Intent intent=new Intent();
             intent.setClass(Music_Activity.this,Sports_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Music){
             Intent intent=new Intent();
             intent.setClass(Music_Activity.this,Music_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Mood){
             Intent intent=new Intent();
             intent.setClass(Music_Activity.this,Mood_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Question){
             Intent intent=new Intent();
             intent.setClass(Music_Activity.this,Question_Activity.class);
             startActivity(intent);
+            finish();
         }
         else if(id==R.id.Logout)
         {
@@ -149,6 +160,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
                     Intent intent=new Intent();
                     intent.setClass(Music_Activity.this,Main_Activity.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){

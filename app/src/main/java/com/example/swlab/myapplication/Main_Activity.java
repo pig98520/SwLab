@@ -108,6 +108,7 @@ public class Main_Activity extends AppCompatActivity {
                         Intent intent=new Intent();
                         intent.setClass(Main_Activity.this,Index_Activity.class);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -124,6 +125,7 @@ public class Main_Activity extends AppCompatActivity {
                         Intent intent=new Intent();
                         intent.setClass(Main_Activity.this,Index_Activity.class);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

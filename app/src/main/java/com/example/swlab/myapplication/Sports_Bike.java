@@ -66,6 +66,7 @@ public class Sports_Bike extends AppCompatActivity implements LocationListener{
         Intent intent = new Intent();
         intent.setClass(Sports_Bike.this, Sports_Record.class);
         startActivity(intent);
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,6 +29,7 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(Leisure_Theater_Activity.this, Leisure_Activity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

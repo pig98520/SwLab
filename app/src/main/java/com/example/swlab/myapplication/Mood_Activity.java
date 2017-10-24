@@ -30,6 +30,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
     @Override
     public void onBackPressed() {
        startActivity(new Intent(Mood_Activity.this,Index_Activity.class));
+        finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent();
                 intent.setClass(Mood_Activity.this,Mood_Detection_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -64,6 +66,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent();
                 intent.setClass(Mood_Activity.this,Mood_Choose_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         diary.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent();
                 intent.setClass(Mood_Activity.this,Mood_Diary_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         sum.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +82,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent();
                 intent.setClass(Mood_Activity.this,Mood_Sum_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +91,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 Intent intent = new Intent();
                 intent.setClass(Mood_Activity.this  , Index_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
         menu_btn.setOnClickListener(new View.OnClickListener() {
@@ -104,26 +110,31 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
             Intent intent=new Intent();
             intent.setClass(Mood_Activity.this,Leisure_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Sport){
             Intent intent=new Intent();
             intent.setClass(Mood_Activity.this,Sports_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Music){
             Intent intent=new Intent();
             intent.setClass(Mood_Activity.this,Music_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Mood){
             Intent intent=new Intent();
             intent.setClass(Mood_Activity.this,Mood_Activity.class);
             startActivity(intent);
+            finish();
         }
         if(id== R.id.Question){
             Intent intent=new Intent();
             intent.setClass(Mood_Activity.this,Question_Activity.class);
             startActivity(intent);
+            finish();
         }
         else if(id==R.id.Logout)
         {
@@ -137,6 +148,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                     Intent intent=new Intent();
                     intent.setClass(Mood_Activity.this,Main_Activity.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             DialogInterface.OnClickListener cancelClick =new DialogInterface.OnClickListener(){
