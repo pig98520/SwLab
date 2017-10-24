@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/background_orange"
     android:id="@+id/drawerLayout">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +16,7 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="470dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -25,7 +25,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <de.morrox.fontinator.FontTextView
         android:id="@+id/txt_question"
@@ -36,7 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/Question"
-        android:textColor="@color/authui_inputTextColorDark"
+        android:textColor="@color/white"
         android:textSize="36sp"
         app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +82,7 @@
         android:id="@+id/nav_home"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
+        android:layout_gravity="end"
+        android:background="@color/background"
         app:menu="@menu/navigation_menu"></android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

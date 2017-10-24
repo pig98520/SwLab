@@ -164,7 +164,7 @@ public class Index_Activity extends AppCompatActivity implements NavigationView.
             logoutDialog.setNegativeButton("取消",cancelClick);
             logoutDialog.show();
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 }

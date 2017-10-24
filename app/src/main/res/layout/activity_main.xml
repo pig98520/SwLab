@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <EditText
+    <de.morrox.fontinator.FontEditText
         android:id="@+id/txtID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,6 +22,7 @@
         android:ems="10"
         android:hint="@string/ID"
         android:inputType="textEmailAddress"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.732"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.226" />
 
-    <EditText
+    <de.morrox.fontinator.FontEditText
         android:id="@+id/txtPsw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
         android:ems="10"
         android:hint="@string/Psw"
         android:inputType="textPassword"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.732"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.419" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/btnLogin"
         android:layout_width="120dp"
         android:layout_height="40dp"
@@ -64,6 +66,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -71,7 +74,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.642" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/btnRegister"
         android:layout_width="120dp"
         android:layout_height="40dp"
@@ -86,6 +89,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -93,7 +97,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/btnForget"
         android:layout_width="120dp"
         android:layout_height="40dp"
@@ -108,6 +112,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -117,8 +122,8 @@
 
     <ImageView
         android:id="@+id/imageView_id"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -132,9 +137,25 @@
         app:srcCompat="@drawable/id" />
 
     <ImageView
-        android:id="@+id/imageView_psw"
+        android:id="@+id/image_View_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067"
+        app:srcCompat="@drawable/icon_man" />
+
+    <ImageView
+        android:id="@+id/imageView_psw"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -146,5 +167,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.425"
         app:srcCompat="@drawable/psw" />
+
+    <de.morrox.fontinator.FontTextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:font="huakang_pianpian.otf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
 
 </android.support.constraint.ConstraintLayout>

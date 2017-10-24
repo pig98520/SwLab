@@ -103,7 +103,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
+                drawer.openDrawer(GravityCompat.END);
             }
         });
     }
@@ -161,7 +161,7 @@ public class Music_Activity extends AppCompatActivity implements NavigationView.
             logoutDialog.setNegativeButton("取消",cancelClick);
             logoutDialog.show();
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 }

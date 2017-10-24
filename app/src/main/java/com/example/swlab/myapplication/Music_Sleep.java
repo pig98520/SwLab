@@ -1,9 +1,8 @@
 package com.example.swlab.myapplication;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -24,7 +24,9 @@ import com.firebase.client.ValueEventListener;
 import java.io.IOException;
 
 public class Music_Sleep extends AppCompatActivity {
-    private ProgressDialog progressDialog;
+    private Dialog progressDialog;
+    private TextView dialog_title;
+    private TextView dialog_message;
     private MediaPlayer music;
     private Firebase musicFirebaseRef;
     private String musicUrl = " ";
@@ -102,13 +104,7 @@ public class Music_Sleep extends AppCompatActivity {
 
         music=new MediaPlayer(); //建立一個media player
         musicFirebaseRef=new Firebase("https://swlabapp.firebaseio.com/server/sleep/"+music_index); //取得firebase網址 用亂數取得節點網址
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("載入音樂中,請稍後");
-        progressDialog.setIcon(R.drawable.loading_24);
-        progressDialog.setProgressStyle(R.style.DialogCustom);
-        progressDialog.setIndeterminate(true);
-        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        progressDialog.show();
+        progressDialog();
         musicFirebaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,6 +129,20 @@ public class Music_Sleep extends AppCompatActivity {
             }
         });
     }
+
+    private void progressDialog() {
+        progressDialog =new Dialog(this,R.style.DialogCustom);
+        progressDialog.setContentView(R.layout.custom_progress_dialog);
+        progressDialog.setCancelable(false);
+        dialog_title = (TextView) progressDialog.findViewById(R.id.title);
+        dialog_title.setText("Loading");
+        dialog_message = (TextView) progressDialog.findViewById(R.id.message);
+        dialog_message.setText("載入音樂請稍候...");
+        progressDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_rounded);
+
+        progressDialog.show();
+    }
+
     private void mCompletionListener() {
         music.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override

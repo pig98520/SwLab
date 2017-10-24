@@ -74,7 +74,7 @@ public class Question_Activity extends AppCompatActivity implements NavigationVi
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
+                drawer.openDrawer(GravityCompat.END);
             }
         });
     }
@@ -154,7 +154,7 @@ public class Question_Activity extends AppCompatActivity implements NavigationVi
             logoutDialog.setNegativeButton("取消",cancelClick);
             logoutDialog.show();
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 }

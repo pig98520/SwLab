@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.134" />
 
-    <Button
+    <de.morrox.fontinator.FontButton
         android:id="@+id/btn_stop"
         android:layout_width="170dp"
         android:layout_height="40dp"
@@ -36,7 +36,11 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/time_stop"
+        android:text="     結束運動"
+        android:textAllCaps="false"
+        android:textSize="18sp"
         android:visibility="invisible"
+        app:font="huakang_pianpian.otf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
