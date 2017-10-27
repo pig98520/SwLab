@@ -70,7 +70,7 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
                 };
         recyclerView.setAdapter(adapter);
     }
-    static class LeisureViewHolder extends RecyclerView.ViewHolder {
+    public static class LeisureViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title;
         TextView content;

@@ -66,7 +66,7 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
                 };
         recyclerView.setAdapter(adapter);
     }
-    static class LeisureViewHolder extends RecyclerView.ViewHolder {
+    public static class LeisureViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title;
         TextView content;
