@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +46,8 @@ public class Mood_Diary_Activity extends AppCompatActivity {
                 moodDate=(date.getYear()+"-"+(date.getMonth()+1)+"-"+date.getDayOfMonth());
                 Content=content.getText().toString();
                 insertDate(moodDate,Content);
+                content.setText("");
+                Toast.makeText(Mood_Diary_Activity.this,"日記已儲存。",Toast.LENGTH_LONG);
             }
         });
     }

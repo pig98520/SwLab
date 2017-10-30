@@ -48,7 +48,7 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot pisSnapshot : dataSnapshot.getChildren()) {
-                    DB_Lerisure_Theater lerisure=pisSnapshot.getValue(DB_Lerisure_Theater.class);
+                    DB_Leisure_Theater lerisure=pisSnapshot.getValue(DB_Leisure_Theater.class);
                     Log.i("Photo's Title:", lerisure.getTitle());
                     Log.i("Photo's Content:", lerisure.getContent());
                     Log.i("Photo's Url:", lerisure.getImageUrl());
@@ -61,10 +61,10 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
             }
         });
 
-        FirebaseRecyclerAdapter<DB_Lerisure_Theater,LeisureViewHolder> adapter=
-                new FirebaseRecyclerAdapter<DB_Lerisure_Theater, LeisureViewHolder>(DB_Lerisure_Theater.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
+        FirebaseRecyclerAdapter<DB_Leisure_Theater,LeisureViewHolder> adapter=
+                new FirebaseRecyclerAdapter<DB_Leisure_Theater, LeisureViewHolder>(DB_Leisure_Theater.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
                     @Override
-                    protected void populateViewHolder(LeisureViewHolder viewHolder, DB_Lerisure_Theater model, int position) {
+                    protected void populateViewHolder(LeisureViewHolder viewHolder, DB_Leisure_Theater model, int position) {
                         viewHolder.setPhoto(model);
                     }
                 };
@@ -82,7 +82,7 @@ public class Leisure_Theater_Activity extends AppCompatActivity {
             content = (TextView) itemView.findViewById(R.id.txt_content);
         }
 
-        public void setPhoto(DB_Lerisure_Theater lerisure) {
+        public void setPhoto(DB_Leisure_Theater lerisure) {
             title.setText(lerisure.getTitle());
 /*            content.setText(lerisure.getContent());*/
             content.setText(Html.fromHtml("<a href="+lerisure.getContent()+">官方網站</a> "));

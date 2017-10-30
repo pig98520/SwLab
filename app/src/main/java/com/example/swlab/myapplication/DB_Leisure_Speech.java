@@ -7,14 +7,24 @@ package com.example.swlab.myapplication;
 public class DB_Leisure_Speech {
     private String title;
     private String id;
-
+    private String imageUrl;
     public DB_Leisure_Speech(){
 
     }
 
-    public DB_Leisure_Speech(String title, String id) {
+
+    public DB_Leisure_Speech(String title, String id, String imageUrl) {
         this.title = title;
         this.id = id;
+        this.imageUrl=imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {

@@ -45,7 +45,7 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot pisSnapshot : dataSnapshot.getChildren()) {
-                    DB_Lerisure_Exhibition lerisure=pisSnapshot.getValue(DB_Lerisure_Exhibition.class);
+                    DB_Leisure_Exhibition lerisure=pisSnapshot.getValue(DB_Leisure_Exhibition.class);
                     Log.i("Photo's Title:", lerisure.getTitle());
                     Log.i("Photo's Content:", lerisure.getContent());
                     Log.i("Photo's Url:", lerisure.getImageUrl());
@@ -57,10 +57,10 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
                 Log.e("Photo", "failed: " + databaseError.getMessage());
             }
         });
-        FirebaseRecyclerAdapter<DB_Lerisure_Exhibition,LeisureViewHolder> adapter=
-                new FirebaseRecyclerAdapter<DB_Lerisure_Exhibition, LeisureViewHolder>(DB_Lerisure_Exhibition.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
+        FirebaseRecyclerAdapter<DB_Leisure_Exhibition,LeisureViewHolder> adapter=
+                new FirebaseRecyclerAdapter<DB_Leisure_Exhibition, LeisureViewHolder>(DB_Leisure_Exhibition.class,R.layout.leisure_theater_list,LeisureViewHolder.class,databaseRef) {
                     @Override
-                    protected void populateViewHolder(LeisureViewHolder viewHolder, DB_Lerisure_Exhibition model, int position) {
+                    protected void populateViewHolder(LeisureViewHolder viewHolder, DB_Leisure_Exhibition model, int position) {
                         viewHolder.setPhoto(model);
                     }
                 };
@@ -78,7 +78,7 @@ public class Leisure_Exhibition_Activity extends AppCompatActivity {
             content = (TextView) itemView.findViewById(R.id.txt_content);
         }
 
-        public void setPhoto(DB_Lerisure_Exhibition lerisure) {
+        public void setPhoto(DB_Leisure_Exhibition lerisure) {
             title.setText(lerisure.getTitle());
             /* content.setText(lerisure.getContent());*/
             content.setText(Html.fromHtml("<a href="+lerisure.getContent()+">官方網站</a> "));

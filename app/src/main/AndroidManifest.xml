@@ -60,6 +60,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Leisure_Speech_Activity"
             android:screenOrientation="portrait" />
+        <activity android:name=".Leisure_Speech_Youtube_Activity"
+            android:screenOrientation="landscape" />
         <activity android:name=".Leisure_Article_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Music_Activity"

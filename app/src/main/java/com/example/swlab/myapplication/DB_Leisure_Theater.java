@@ -4,15 +4,15 @@ package com.example.swlab.myapplication;
  * Created by pig98520 on 2017/5/21.
  */
 
-public class DB_Lerisure_Exhibition {
+public class DB_Leisure_Theater {
     private String title;
     private String content;
     private String imageUrl;
 
-    public DB_Lerisure_Exhibition(){
+    public DB_Leisure_Theater(){
 
     }
-    public DB_Lerisure_Exhibition(String title, String content, String imageUrl) {
+    public DB_Leisure_Theater(String title, String content, String imageUrl) {
         this.title = title;
         this.content = content;
         this.imageUrl = imageUrl;

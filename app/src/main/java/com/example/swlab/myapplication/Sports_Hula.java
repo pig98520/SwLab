@@ -157,20 +157,19 @@ public class Sports_Hula extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input.getText().toString().trim().equals("")) {
-                    Toast.makeText(Sports_Hula.this, "請輸入數字~", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    count = input.getText().toString().trim();
-                    txt_count.setText(count);
-                    cal= txt_cal.getText().toString().trim();
+                if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
+                    count = txt_count.getText().toString().trim();
+                    cal = txt_cal.getText().toString().trim();
                     time = txt_time.getText().toString().trim();
                     insertData(nowTime, cal, count, time);
                     finish.setVisibility(View.INVISIBLE);
                     customDialog.dismiss();
                     Toast.makeText(Sports_Hula.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
                 }
-
+                else if(input.getText().toString().trim().equals(""))
+                    Toast.makeText(Sports_Hula.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(Sports_Hula.this, "請輸入數字", Toast.LENGTH_LONG).show();
             }
         });
         customDialog.show();

@@ -159,20 +159,19 @@ public class Sports_Swim extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input.getText().toString().trim().equals("")) {
-                    Toast.makeText(Sports_Swim.this, "請輸入數字~", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    distance = input.getText().toString().trim();
-                    cal= txt_cal.getText().toString().trim();
+                if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
+                    distance = txt_distance.getText().toString().trim();
+                    cal = txt_cal.getText().toString().trim();
                     time = txt_time.getText().toString().trim();
                     insertData(nowTime, cal, distance, time);
                     finish.setVisibility(View.INVISIBLE);
                     customDialog.dismiss();
-                    txt_distance.setText(distance);
                     Toast.makeText(Sports_Swim.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
                 }
-
+                else if(input.getText().toString().trim().equals(""))
+                    Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
             }
         });
         customDialog.show();
