@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -143,8 +144,9 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
     }
 
     private void timerStop() {
+        DecimalFormat mDecimalFormat = new DecimalFormat("#.##");
         txt_time.setText(timer.getText().toString().trim());
-        txt_cal.setText(((min*60+sec)*0.137)+"");
+        txt_cal.setText(mDecimalFormat.format((min*60+sec)*0.137)+"");
         timer.setText("00:00");
         finish.setText("開始運動");
         min=0;
@@ -154,70 +156,72 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
     }
 
     private void finishDialog() {
-        if(!isSensor){
-            customDialog=new Dialog(Sports_Rope.this,R.style.DialogCustom);
-            customDialog.setContentView(R.layout.custom_dialog_text);
-            customDialog.setCancelable(false);
-            confirm=(Button)customDialog.findViewById(R.id.confirm);
-            confirm.setText("確認");
-            title=(TextView)customDialog.findViewById(R.id.title);
-            title.setText("結束運動");
-            message=(TextView)customDialog.findViewById(R.id.message);
-            message.setText("請輸入今天做了幾下運動吧~");
-            input=(EditText)customDialog.findViewById(R.id.editText);
+            if(!isSensor){
+                customDialog=new Dialog(Sports_Rope.this,R.style.DialogCustom);
+                customDialog.setContentView(R.layout.custom_dialog_text);
+                customDialog.setCancelable(false);
+                customDialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_rounded);
+                confirm=(Button)customDialog.findViewById(R.id.confirm);
+                confirm.setText("確認");
+                title=(TextView)customDialog.findViewById(R.id.title);
+                title.setText("結束運動");
+                message=(TextView)customDialog.findViewById(R.id.message);
+                message.setText("請輸入今天做了幾下運動吧~");
+                input=(EditText)customDialog.findViewById(R.id.editText);
 
-            confirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(input.getText().toString().trim().equals("")) {
-                        Toast.makeText(Sports_Rope.this, "請輸入數字~", Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        count = input.getText().toString().trim();
-                        txt_count.setText(count);
-                        cal= txt_cal.getText().toString().trim();
-                        time = txt_time.getText().toString().trim();
-                        insertData(nowTime, cal, count, time);
-                        finish.setVisibility(View.INVISIBLE);
-                        customDialog.dismiss();
-                        Toast.makeText(Sports_Rope.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
-                    }
-
-                }
-            });
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            if(input.getText().toString().trim().equals(""))
+                                Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                            else {
+                                if (input.getText().toString().trim().matches("^[0-9]*$")) {
+                                    count = txt_count.getText().toString().trim();
+                                    txt_count.setText(input.getText());
+                                    cal = txt_cal.getText().toString().trim();
+                                    time = txt_time.getText().toString().trim();
+                                    insertData(nowTime, cal, count, time);
+                                    finish.setVisibility(View.INVISIBLE);
+                                    customDialog.dismiss();
+                                    Toast.makeText(Sports_Rope.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
             customDialog.show();
-        }
-        else{
-            customDialog=new Dialog(Sports_Rope.this,R.style.DialogCustom);
-            customDialog.setContentView(R.layout.custom_dialog_one);
-            customDialog.setCancelable(false);
-            confirm=(Button)customDialog.findViewById(R.id.confirm);
-            confirm.setText("確認");
-            title=(TextView)customDialog.findViewById(R.id.title);
-            title.setText("結束運動");
-            message=(TextView)customDialog.findViewById(R.id.message);
-            message.setText("按下確認以儲存紀錄");
-            confirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
-                        count = txt_count.getText().toString().trim();
-                        cal = txt_cal.getText().toString().trim();
-                        time = txt_time.getText().toString().trim();
-                        insertData(nowTime, cal, count, time);
-                        finish.setVisibility(View.INVISIBLE);
-                        customDialog.dismiss();
-                        Toast.makeText(Sports_Rope.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+            }
+            else{
+                customDialog=new Dialog(Sports_Rope.this,R.style.DialogCustom);
+                customDialog.setContentView(R.layout.custom_dialog_one);
+                customDialog.setCancelable(false);
+                confirm=(Button)customDialog.findViewById(R.id.confirm);
+                confirm.setText("確認");
+                title=(TextView)customDialog.findViewById(R.id.title);
+                title.setText("結束運動");
+                message=(TextView)customDialog.findViewById(R.id.message);
+                message.setText("按下確認以儲存紀錄");
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
+                            count = txt_count.getText().toString().trim();
+                            cal = txt_cal.getText().toString().trim();
+                            time = txt_time.getText().toString().trim();
+                            insertData(nowTime, cal, count, time);
+                            finish.setVisibility(View.INVISIBLE);
+                            customDialog.dismiss();
+                            Toast.makeText(Sports_Rope.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                        }
+                        else if(input.getText().toString().trim().equals(""))
+                            Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
                     }
-                    else if(input.getText().toString().trim().equals(""))
-                        Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                }
-            });
-            customDialog.show();
+                });
+                customDialog.show();
+            }
         }
-    }
 
     private void insertData(String sportDate, String Cal, String Distance, String sportTime){
         Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user");
@@ -248,11 +252,13 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(running)
+        if(isTimer&&running)
         {
             sensorCount=String.valueOf(event.values[0]);
             txt_count.setText(sensorCount);
         }
+        if(!isTimer)
+            event.values[0]=0;
     }
 
     @Override

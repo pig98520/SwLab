@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -101,7 +103,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
     }
 
     private void locationServiceInitial() {
-       /* lm = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
+        lm = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
         Criteria criteria = new Criteria();    //資訊提供者選取標準
         bestProvider = lm.getBestProvider(criteria, true);    //選擇精準度最高的提供者
 
@@ -114,11 +116,11 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return_back;
+            return;
         }
         location = lm.getLastKnownLocation(bestProvider);
-        getLocation(location);*/
-        lm = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
+        getLocation(location);
+/*        lm = (LocationManager) getSystemService(LOCATION_SERVICE);    //取得系統定位服務
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -130,7 +132,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
             return;
         }
         location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        getLocation(location);
+        getLocation(location);*/
     }
 
     private void getLocation(Location location) {    //將定位資訊顯示在畫面中
@@ -220,8 +222,9 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
     }
 
     private void timerStop() {
+        DecimalFormat mDecimalFormat = new DecimalFormat("#.##");
         txt_time.setText(timer.getText().toString().trim());
-        txt_cal.setText(((min*60+sec)*0.1819)+"");
+        txt_cal.setText(mDecimalFormat.format((min*60+sec)*0.1819)+"");
         timer.setText("00:00");
         min=0;
         sec=0;
@@ -244,23 +247,26 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
         message=(TextView)customDialog.findViewById(R.id.message);
         message.setText("請輸入今天運動的距離吧~");
         input=(EditText)customDialog.findViewById(R.id.editText);
+        input.setHint("km");
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
-                    distance = txt_distance.getText().toString().trim();
-                    cal = txt_cal.getText().toString().trim();
-                    time = txt_time.getText().toString().trim();
-                    insertData(nowTime, cal, distance, time);
-                    finish.setVisibility(View.INVISIBLE);
-                    customDialog.dismiss();
-                    Toast.makeText(Sports_Run.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                if(input.getText().toString().trim().equals(""))
+                    Toast.makeText(Sports_Run.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                else {
+                    if (input.getText().toString().trim().matches("^[0-9]*$")) {
+                        distance = txt_distance.getText().toString().trim();
+                        txt_distance.setText(input.getText());
+                        cal = txt_cal.getText().toString().trim();
+                        time = txt_time.getText().toString().trim();
+                        insertData(nowTime, cal, distance, time);
+                        finish.setVisibility(View.INVISIBLE);
+                        customDialog.dismiss();
+                        Toast.makeText(Sports_Run.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(Sports_Run.this, "請輸入數字", Toast.LENGTH_LONG).show();
                 }
-                else if(input.getText().toString().trim().equals(""))
-                    Toast.makeText(Sports_Run.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(Sports_Run.this, "請輸入數字", Toast.LENGTH_LONG).show();
             }
         });
         customDialog.show();

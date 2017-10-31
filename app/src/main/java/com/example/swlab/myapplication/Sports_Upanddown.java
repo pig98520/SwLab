@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -142,8 +143,9 @@ public class Sports_Upanddown extends AppCompatActivity implements SensorEventLi
     }
 
     private void timerStop() {
+        DecimalFormat mDecimalFormat = new DecimalFormat("#.##");
         txt_time.setText(timer.getText().toString().trim());
-        txt_cal.setText(((min*60+sec)*0.5)+"");
+        txt_cal.setText(mDecimalFormat.format((min*60+sec)*0.5)+"");
         timer.setText("00:00");
         min=0;
         sec=0;
@@ -168,19 +170,21 @@ public class Sports_Upanddown extends AppCompatActivity implements SensorEventLi
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(input.getText().toString().trim().matches("^[0-9]*$")) {
-                        count = txt_count.getText().toString().trim();
-                        cal = txt_cal.getText().toString().trim();
-                        time = txt_time.getText().toString().trim();
-                        insertData(nowTime, cal, count, time);
-                        finish.setVisibility(View.INVISIBLE);
-                        customDialog.dismiss();
-                        Toast.makeText(Sports_Upanddown.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                    if(input.getText().toString().trim().equals(""))
+                        Toast.makeText(Sports_Upanddown.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                    else {
+                        if (input.getText().toString().trim().matches("^[0-9]*$")) {
+                            count = txt_count.getText().toString().trim();
+                            txt_count.setText(input.getText());
+                            cal = txt_cal.getText().toString().trim();
+                            time = txt_time.getText().toString().trim();
+                            insertData(nowTime, cal, count, time);
+                            finish.setVisibility(View.INVISIBLE);
+                            customDialog.dismiss();
+                            Toast.makeText(Sports_Upanddown.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                        } else
+                            Toast.makeText(Sports_Upanddown.this, "請輸入數字", Toast.LENGTH_LONG).show();
                     }
-                    else if(input.getText().toString().trim().equals(""))
-                        Toast.makeText(Sports_Upanddown.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(Sports_Upanddown.this, "請輸入數字", Toast.LENGTH_LONG).show();
                 }
             });
             customDialog.show();
@@ -239,11 +243,13 @@ public class Sports_Upanddown extends AppCompatActivity implements SensorEventLi
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(running)
+        if(isTimer&&running)
         {
             sensorCount=String.valueOf(event.values[0]);
             txt_count.setText(sensorCount);
         }
+        if(!isTimer)
+            event.values[0]=0;
     }
 
     @Override

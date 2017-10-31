@@ -7,16 +7,16 @@ package com.example.swlab.myapplication;
 public class DB_Sports_Others {
     private String sportdate;
     private String cal;
-    private String distance;
+    private String count;
     private String sporttime;
 
     public DB_Sports_Others(){
     }
 
-    public DB_Sports_Others(String sportdate, String cal, String distance, String sporttime) {
+    public DB_Sports_Others(String sportdate, String cal, String count, String sporttime) {
         this.sportdate = sportdate;
         this.cal = cal;
-        this.distance = distance;
+        this.count = count;
         this.sporttime = sporttime;
     }
 
@@ -36,12 +36,12 @@ public class DB_Sports_Others {
         this.cal = cal;
     }
 
-    public String getDistance() {
-        return distance;
+    public String getCount() {
+        return count;
     }
 
-    public void setDistance(String distance) {
-        this.distance = distance;
+    public void setCount(String count) {
+        this.count = count;
     }
 
     public String getSporttime() {

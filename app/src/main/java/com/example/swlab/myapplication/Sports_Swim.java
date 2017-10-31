@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -133,8 +134,9 @@ public class Sports_Swim extends AppCompatActivity {
     }
 
     private void timerStop() {
+        DecimalFormat mDecimalFormat = new DecimalFormat("#.##");
         txt_time.setText(timer.getText().toString().trim());
-        txt_cal.setText(((min*60+sec)*0.2877)+"");
+        txt_cal.setText(mDecimalFormat.format((min*60+sec)*0.2877)+"");
         timer.setText("00:00");
         finish.setText("開始運動");
         min=0;
@@ -155,23 +157,26 @@ public class Sports_Swim extends AppCompatActivity {
         message=(TextView)customDialog.findViewById(R.id.message);
         message.setText("請輸入今天運動的距離吧~");
         input=(EditText)customDialog.findViewById(R.id.editText);
+        input.setHint("km");
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
-                    distance = txt_distance.getText().toString().trim();
-                    cal = txt_cal.getText().toString().trim();
-                    time = txt_time.getText().toString().trim();
-                    insertData(nowTime, cal, distance, time);
-                    finish.setVisibility(View.INVISIBLE);
-                    customDialog.dismiss();
-                    Toast.makeText(Sports_Swim.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                if(input.getText().toString().trim().equals(""))
+                    Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                else {
+                    if (input.getText().toString().trim().matches("^[0-9]*$")) {
+                        distance = input.getText().toString().trim();
+                        txt_distance.setText(input.getText());
+                        cal = txt_cal.getText().toString().trim();
+                        time = txt_time.getText().toString().trim();
+                        insertData(nowTime, cal, distance, time);
+                        finish.setVisibility(View.INVISIBLE);
+                        customDialog.dismiss();
+                        Toast.makeText(Sports_Swim.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
                 }
-                else if(input.getText().toString().trim().equals(""))
-                    Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(Sports_Swim.this, "請輸入數字", Toast.LENGTH_LONG).show();
             }
         });
         customDialog.show();
