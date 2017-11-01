@@ -38,6 +38,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Sports_Activity"
             android:screenOrientation="portrait" />
+        <activity android:name=".Information_Activity"
+            android:screenOrientation="portrait" />
         <activity android:name=".Question_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".Leisure_Activity"
@@ -97,8 +99,6 @@
         <activity android:name=".Sports_Rope"
             android:screenOrientation="portrait" />
         <activity android:name=".Sports_Swim"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Information_Activity"
             android:screenOrientation="portrait" />
         <receiver android:name=".AlarmNotificationReceiver"/>
     </application>
