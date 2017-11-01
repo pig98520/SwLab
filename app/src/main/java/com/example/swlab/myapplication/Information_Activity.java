@@ -1,3 +1,4 @@
+
 package com.example.swlab.myapplication;
 
 import android.content.DialogInterface;
@@ -12,16 +13,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class Mood_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.swlab.myapplication.R.layout.information_index;
+
+public class Information_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button back_btn;
     private Button menu_btn;
-    private Button decetion;
-    private Button choose;
-    private Button diary;
-    private Button sum;
+    private ListView listview;
+    private List<DB_Information> questionList;
+    private DatabaseReference databaseRef;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigateionView;
@@ -29,67 +40,35 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onBackPressed() {
-       startActivity(new Intent(Mood_Activity.this,Index_Activity.class));
+        startActivity(new Intent(Information_Activity.this,Index_Activity.class));
         finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mood_index);
-        processViews();
-        processControllers();
+        setContentView(information_index);
+        processView();
+        processControl();
     }
-    private void processViews(){
-        decetion=(Button)findViewById(R.id.btnDetection);
-        choose =(Button)findViewById(R.id.btnChoose);
-        diary=(Button)findViewById(R.id.btnDiary);
-        sum=(Button)findViewById(R.id.btnSum);
+
+    private void processView() {
+        databaseRef= FirebaseDatabase.getInstance().getReference(DB_Information.REF_Information);
+        listview=(ListView)findViewById(R.id.listView);
+        questionList=new ArrayList<DB_Information>();
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
-        navigateionView.setNavigationItemSelectedListener(Mood_Activity.this);
+        navigateionView.setNavigationItemSelectedListener(Information_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
         back_btn=(Button)findViewById(R.id.back_btn);
         menu_btn=(Button)findViewById(R.id.menu_btn);
         auth= FirebaseAuth.getInstance();
     }
-    private void processControllers(){
-        decetion.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(Mood_Activity.this,Mood_Detection_Activity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
-      choose.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(Mood_Activity.this,Mood_Choose_Activity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        diary.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(Mood_Activity.this,Mood_Diary_Activity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        sum.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(Mood_Activity.this,Mood_Sum_Activity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    private void processControl() {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Mood_Activity.this  , Index_Activity.class);
+                intent.setClass(Information_Activity.this  , Index_Activity.class);
                 startActivity(intent);
                 finish();
             }
@@ -103,42 +82,64 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                questionList.clear();
+                for(DataSnapshot informationSnapshot : dataSnapshot.getChildren()){
+                    DB_Information information=informationSnapshot.getValue(DB_Information.class);
+                    questionList.add(information);
+                }
+                Information_List adapter=new Information_List(Information_Activity.this,questionList);
+                listview.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
 
         if(id== R.id.Entertainments){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Leisure_Activity.class);
+            intent.setClass(Information_Activity.this,Leisure_Activity.class);
             startActivity(intent);
             finish();
         }
         if(id== R.id.Sport){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Sports_Activity.class);
+            intent.setClass(Information_Activity.this,Sports_Activity.class);
             startActivity(intent);
             finish();
         }
         if(id== R.id.Music){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Music_Activity.class);
+            intent.setClass(Information_Activity.this,Music_Activity.class);
             startActivity(intent);
             finish();
         }
         if(id== R.id.Mood){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Mood_Activity.class);
+            intent.setClass(Information_Activity.this,Mood_Activity.class);
             startActivity(intent);
             finish();
         }
         if(id== R.id.Question){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Question_Activity.class);
+            intent.setClass(Information_Activity.this,Question_Activity.class);
             startActivity(intent);
             finish();
         }
         if(id==R.id.Information){
             Intent intent=new Intent();
-            intent.setClass(Mood_Activity.this,Information_Activity.class);
+            intent.setClass(Information_Activity.this,Information_Activity.class);
             startActivity(intent);
             finish();
         }
@@ -152,7 +153,7 @@ public class Mood_Activity extends AppCompatActivity implements NavigationView.O
                 public void onClick(DialogInterface dialog, int which) {
                     auth.signOut();
                     Intent intent=new Intent();
-                    intent.setClass(Mood_Activity.this,Main_Activity.class);
+                    intent.setClass(Information_Activity.this,Main_Activity.class);
                     startActivity(intent);
                     finish();
                 }

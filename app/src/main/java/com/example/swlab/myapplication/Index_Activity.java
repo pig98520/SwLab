@@ -23,6 +23,7 @@ public class Index_Activity extends AppCompatActivity implements NavigationView.
     private Button btnfun3;
     private Button btnfun4;
     private Button btnfun5;
+    private Button btnfun6;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigateionView;
@@ -65,6 +66,7 @@ public class Index_Activity extends AppCompatActivity implements NavigationView.
         btnfun3=(Button)findViewById(R.id.btn3);
         btnfun4=(Button)findViewById(R.id.btn4);
         btnfun5=(Button)findViewById(R.id.btn5);
+        btnfun6=(Button)findViewById(R.id.btn6);
         navigateionView=(NavigationView) findViewById(R.id.nav_home);
         navigateionView.setNavigationItemSelectedListener(Index_Activity.this);
         drawer=(DrawerLayout)findViewById(R.id.drawerLayout);
@@ -109,6 +111,14 @@ public class Index_Activity extends AppCompatActivity implements NavigationView.
         btnfun5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent=new Intent();
+                intent.setClass(Index_Activity.this,Information_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btnfun6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent=new Intent();
                 intent.setClass(Index_Activity.this,Question_Activity.class);
                 startActivity(intent);
                 finish();
@@ -147,6 +157,12 @@ public class Index_Activity extends AppCompatActivity implements NavigationView.
         if(id== R.id.Question){
             Intent intent=new Intent();
             intent.setClass(Index_Activity.this,Question_Activity.class);
+            startActivity(intent);
+            finish();
+        }
+        if(id== R.id.Information){
+            Intent intent=new Intent();
+            intent.setClass(Index_Activity.this,Information_Activity.class);
             startActivity(intent);
             finish();
         }

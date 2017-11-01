@@ -15,6 +15,9 @@
         android:icon="@mipmap/ic_favorite_black_24dp"/>
     <item android:id="@+id/Question"
         android:title="常見問題"
+        android:icon="@mipmap/ic_help_outline_black_24dp"/>
+    <item android:id="@+id/Information"
+        android:title="相關資訊"
         android:icon="@mipmap/ic_question_answer_black_24dp"/>
     <item android:id="@+id/Logout"
         android:title="登出"

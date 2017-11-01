@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gray"
+    android:background="@drawable/background_skyblue"
     tools:context="com.example.swlab.myapplication.Sports_Record"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">

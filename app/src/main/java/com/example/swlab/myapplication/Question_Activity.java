@@ -137,6 +137,12 @@ public class Question_Activity extends AppCompatActivity implements NavigationVi
             startActivity(intent);
             finish();
         }
+        if(id==R.id.Information){
+            Intent intent=new Intent();
+            intent.setClass(Question_Activity.this,Information_Activity.class);
+            startActivity(intent);
+            finish();
+        }
         else if(id==R.id.Logout)
         {
             AlertDialog.Builder logoutDialog=new AlertDialog.Builder(this);
