@@ -45,7 +45,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <de.morrox.fontinator.FontTextView
         android:id="@+id/bike"
@@ -190,7 +190,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="44dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="8dp"
         android:text="起點經緯度"
         android:textSize="18sp"
@@ -199,8 +198,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.87" />
 
     <de.morrox.fontinator.FontTextView
         android:id="@+id/end"

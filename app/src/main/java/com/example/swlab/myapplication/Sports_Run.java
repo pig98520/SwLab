@@ -61,6 +61,7 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
     private double latitude_start;
     private double longitude_end;
     private double latitude_end;
+    private DecimalFormat mDecimalFormat = new DecimalFormat("#.###");
     private boolean isEnd = false;
 
     @Override
@@ -142,14 +143,14 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
                 longitude_start = location.getLongitude();    //取得經度
                 Log.i("起點經緯度",latitude_start+" "+longitude_start);
                 TextView startLocation=(TextView)findViewById(R.id.start);
-                startLocation.setText(latitude_start+" "+longitude_start);
+                startLocation.setText("起點經緯度: "+mDecimalFormat.format(latitude_start)+" "+mDecimalFormat.format(longitude_start));
             }
             else{
                 latitude_end = location.getLatitude();    //取得緯度
                 longitude_end = location.getLongitude();    //取得經度
                 Log.i("終點經緯度",latitude_end+" "+longitude_end);
                 TextView endLocation=(TextView)findViewById(R.id.end);
-                endLocation.setText(latitude_end+" "+longitude_end);
+                endLocation.setText("終點經緯度: "+mDecimalFormat.format(latitude_end)+" "+mDecimalFormat.format(longitude_end));
             }
 
         } else {
@@ -222,7 +223,6 @@ public class Sports_Run extends AppCompatActivity implements LocationListener {
     }
 
     private void timerStop() {
-        DecimalFormat mDecimalFormat = new DecimalFormat("#.##");
         txt_time.setText(timer.getText().toString().trim());
         txt_cal.setText(mDecimalFormat.format((min*60+sec)*0.1819)+"");
         timer.setText("00:00");
