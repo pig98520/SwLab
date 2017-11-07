@@ -49,7 +49,7 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
     private SensorManager sensorManager;
     private Boolean running=false;
     private Boolean isSensor =false;
-    private String sensorCount;
+    private int sensorCount=0;
 
     @Override
     public void onBackPressed() {
@@ -100,6 +100,7 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
                 else if (min==0&&sec==0){
                     timerStart();
                     isTimer=true;
+                    sensorCount=0;
                 }
                 else{
                     countdownTimer.start();
@@ -202,20 +203,13 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
-                        count = txt_count.getText().toString().trim();
-                        txt_count.setText(input.getText().toString().trim());
-                        cal = txt_cal.getText().toString().trim();
-                        time = txt_time.getText().toString().trim();
-                        insertData(nowTime, cal, count, time);
-                        finish.setVisibility(View.INVISIBLE);
-                        customDialog.dismiss();
-                        Toast.makeText(Sports_Situps.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
-                    }
-                    else if(input.getText().toString().trim().equals(""))
-                        Toast.makeText(Sports_Situps.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(Sports_Situps.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                    count= txt_count.getText().toString().trim();
+                    cal= txt_cal.getText().toString().trim();
+                    time = txt_time.getText().toString().trim();
+                    insertData(nowTime,cal, count, time);
+                    finish.setVisibility(View.INVISIBLE);
+                    customDialog.dismiss();
+                    Toast.makeText(Sports_Situps.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
                 }
             });
             customDialog.show();
@@ -251,13 +245,13 @@ public class Sports_Situps extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(isTimer&&running)
+        if(running&&isTimer)
         {
-            sensorCount=String.valueOf(event.values[0]);
+            sensorCount++;
             txt_count.setText(sensorCount);
         }
         if(!isTimer)
-            event.values[0]=0;
+            sensorCount=0;
     }
 
     @Override

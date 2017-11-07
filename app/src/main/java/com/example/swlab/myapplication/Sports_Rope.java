@@ -49,7 +49,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
     private SensorManager sensorManager;
     private Boolean running=false;
     private Boolean isSensor =false;
-    private String sensorCount;
+    private int sensorCount=0;
 
 
     @Override
@@ -100,6 +100,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
                 }
                 else if (min==0&&sec==0){
                     timerStart();
+                    sensorCount=0;
                     isTimer=true;
                 }
                 else{
@@ -252,13 +253,13 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(isTimer&&running)
+        if(running&&isTimer)
         {
-            sensorCount=String.valueOf(event.values[0]);
+            sensorCount++;
             txt_count.setText(sensorCount);
         }
         if(!isTimer)
-            event.values[0]=0;
+            sensorCount=0;
     }
 
     @Override

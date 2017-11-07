@@ -49,7 +49,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
     private SensorManager sensorManager;
     private Boolean running=false;
     private Boolean isSensor =false;
-    private String sensorCount;
+    private int sensorCount=0;
 
     @Override
     public void onBackPressed() {
@@ -100,6 +100,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
                 else if (min==0&&sec==0){
                     timerStart();
                     isTimer=true;
+                    sensorCount=0;
                 }
                 else{
                     countdownTimer.start();
@@ -244,13 +245,13 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(isTimer&&running)
+        if(running&&isTimer)
         {
-            sensorCount=String.valueOf(event.values[0]);
+            sensorCount++;
             txt_count.setText(sensorCount);
         }
         if(!isTimer)
-            event.values[0]=0;
+            sensorCount=0;
     }
 
     @Override
