@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Swlab.iml" filepath="$PROJECT_DIR$/Swlab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SwLab.iml" filepath="$PROJECT_DIR$/SwLab.iml" />
+      <module fileurl="file://C:\Users\User\Desktop\WorkSpace\SwLab\Swlab.iml" filepath="C:\Users\User\Desktop\WorkSpace\SwLab\Swlab.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\User\Desktop\WorkSpace\SwLab\app\app.iml" filepath="C:\Users\User\Desktop\WorkSpace\SwLab\app\app.iml" />
     </modules>
   </component>
 </project>
