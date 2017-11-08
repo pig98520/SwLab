@@ -41,7 +41,6 @@ public class AlarmNotificationReceiver extends BroadcastReceiver{
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setContentIntent(pendingIntent) //點擊後回到APP
-                //.setContentInfo("推播資訊")
                 .setDefaults(Notification.DEFAULT_LIGHTS|Notification.DEFAULT_SOUND);
 
         NotificationManager notificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
