@@ -20,7 +20,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver{
     private String contentTitle="該運動了喔";
     private String contentText =decimalFormat.format(Calendar.getInstance().getTime().getHours())+":"
             +decimalFormat.format(Calendar.getInstance().getTime().getMinutes())+"到了喔,快點App來運動吧";
-    
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.getStringExtra("contentTitle")!=null)
