@@ -37,7 +37,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver{
         builder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.icon_man)
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
                 .setContentIntent(pendingIntent) //點擊後回到APP
