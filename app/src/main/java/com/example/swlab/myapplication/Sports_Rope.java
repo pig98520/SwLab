@@ -205,19 +205,13 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(input.getText().toString().trim().matches("^[0-9]*$")&&!input.getText().equals("")) {
-                            count = txt_count.getText().toString().trim();
-                            cal = txt_cal.getText().toString().trim();
-                            time = txt_time.getText().toString().trim();
-                            insertData(nowTime, cal, count, time);
-                            finish.setVisibility(View.INVISIBLE);
-                            customDialog.dismiss();
-                            Toast.makeText(Sports_Rope.this, "紀錄已儲存", Toast.LENGTH_LONG).show();
-                        }
-                        else if(input.getText().toString().trim().equals(""))
-                            Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(Sports_Rope.this, "請輸入數字", Toast.LENGTH_LONG).show();
+                        count= txt_count.getText().toString().trim();
+                        cal= txt_cal.getText().toString().trim();
+                        time = txt_time.getText().toString().trim();
+                        insertData(nowTime,cal, count, time);
+                        finish.setVisibility(View.INVISIBLE);
+                        customDialog.dismiss();
+                        Toast.makeText(Sports_Rope.this, "紀錄已儲存",Toast.LENGTH_LONG).show();
                     }
                 });
                 customDialog.show();
@@ -235,7 +229,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
     protected void onResume() {
         super.onResume();
         running=true;
-        Sensor countSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        Sensor countSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         if(countSensor!=null) {
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
             isSensor =true;
@@ -256,7 +250,7 @@ public class Sports_Rope extends AppCompatActivity implements SensorEventListene
         if(running&&isTimer)
         {
             sensorCount++;
-            txt_count.setText(sensorCount);
+            txt_count.setText(sensorCount+"");
         }
         if(!isTimer)
             sensorCount=0;

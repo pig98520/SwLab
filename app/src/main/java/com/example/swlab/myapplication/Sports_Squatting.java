@@ -227,7 +227,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
     protected void onResume() {
         super.onResume();
         running=true;
-        Sensor countSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        Sensor countSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         if(countSensor!=null) {
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
             isSensor =true;
@@ -248,7 +248,7 @@ public class Sports_Squatting extends AppCompatActivity implements SensorEventLi
         if(running&&isTimer)
         {
             sensorCount++;
-            txt_count.setText(sensorCount);
+            txt_count.setText(sensorCount+"");
         }
         if(!isTimer)
             sensorCount=0;
