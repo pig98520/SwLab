@@ -9,52 +9,35 @@
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="320dp"
-        android:layout_height="132dp"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.022" />
-
-    <de.morrox.fontinator.FontButton
-        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/button_rounded"
-        android:text="@string/submit"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:font="huakang_pianpian.otf"
+        android:layout_marginTop="8dp"
+        android:calendarViewShown="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <de.morrox.fontinator.FontEditText
-        android:id="@+id/txtContent"
-        android:layout_width="328dp"
-        android:layout_height="278dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/content"
-        android:inputType="textMultiLine"
-        app:font="huakang_pianpian.otf"
-        app:layout_constraintBottom_toBottomOf="@+id/save"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/datePicker"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737" />
+
+    <de.morrox.fontinator.FontTextView
+        android:id="@+id/txt_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="請選擇日期"
+        android:textSize="24sp"
+        app:font="huakang_pianpian.otf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
 
 </android.support.constraint.ConstraintLayout>

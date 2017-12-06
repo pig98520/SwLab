@@ -3,25 +3,19 @@ package com.example.swlab.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-import com.google.firebase.auth.FirebaseAuth;
+import java.util.Calendar;
 
 public class Mood_Diary_Activity extends AppCompatActivity {
     private DatePicker date;
-    private EditText content;
-    private Button submit;
-    private String moodDate;
-    private String Content;
-    private FirebaseAuth auth;
+    private String strDate;
+    private Intent intent;
+    private Calendar cal;
+
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent();
+        intent=new Intent();
         intent.setClass(Mood_Diary_Activity.this, Mood_Activity.class);
         startActivity(intent);
         finish();
@@ -35,27 +29,23 @@ public class Mood_Diary_Activity extends AppCompatActivity {
     }
     private void processView() {
         date=(DatePicker)findViewById(R.id.datePicker);
-        content=(EditText)findViewById(R.id.txtContent);
-        submit=(Button)findViewById(R.id.save);
-        auth= FirebaseAuth.getInstance();
+        cal = Calendar.getInstance();
+        date.init(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH), onDateChanged);
     }
 
     private void processControl() {
-        submit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                moodDate=(date.getYear()+"-"+(date.getMonth()+1)+"-"+date.getDayOfMonth());
-                Content=content.getText().toString();
-                insertDate(moodDate,Content);
-                content.setText("");
-                Toast.makeText(Mood_Diary_Activity.this,"日記已儲存。",Toast.LENGTH_LONG);
-            }
-        });
-    }
 
-    private void insertDate(String moodDate,String Content){
-        Firebase myFirebaseRef = new Firebase("https://swlabapp.firebaseio.com/user");
-        Firebase userRef = myFirebaseRef.child("moodDiary").child(auth.getCurrentUser().getUid().trim());
-        DB_Mood_Diary data = new DB_Mood_Diary(moodDate,Content);
-        userRef.push().setValue(data);
     }
+    DatePicker.OnDateChangedListener onDateChanged=new DatePicker.OnDateChangedListener() {
+        @Override
+        public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            strDate=(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+            intent = new Intent();
+            intent.setClass(Mood_Diary_Activity.this, Mood_Diary_Check_Activity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("date", strDate);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    };
 }
